@@ -1,764 +1,2949 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
 
-    <title>AG TOP UP</title>
+<title>AG D-M TOP UP</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        body {
-            background: #0b1020;
-            color: #ffffff;
-        }
+body{
+    background:#070707;
+    color:#fff;
+    min-height:100vh;
+}
 
-        .app {
-            max-width: 700px;
-            margin: auto;
-            min-height: 100vh;
-            padding-bottom: 30px;
-        }
+button{
+    cursor:pointer;
+}
 
-        /* HEADER */
-        .header {
-            padding: 25px 20px 18px;
-            background: #101629;
-            border-bottom: 1px solid #123c59;
-        }
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+/* ================= HEADER ================= */
 
-        .logo {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            border: 3px solid #18cfff;
-            box-shadow: 0 0 15px #008cff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
+.header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    height:65px;
+    background:#0d0d0d;
+    border-bottom:1px solid #292929;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    gap:12px;
+}
 
-        .brand h1 {
-            font-size: 31px;
-            letter-spacing: 1px;
-        }
+.menu-btn,
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid #292929;
+    border-radius:12px;
+    background:#171717;
+    color:white;
+    font-size:20px;
+}
 
-        .brand h1 span {
-            color: #18dfff;
-        }
+.logo{
+    font-size:19px;
+    font-weight:900;
+}
 
-        .brand p {
-            color: #13a9c9;
-            letter-spacing: 4px;
-            font-size: 12px;
-            margin-top: 6px;
-        }
+.logo span{
+    color:#ff2929;
+}
 
-        /* WALLET */
-        .wallet-row {
-            display: flex;
-            gap: 14px;
-            margin-top: 22px;
-        }
+.header-space{
+    flex:1;
+}
 
-        .wallet {
-            flex: 1;
-            border: 1px solid #75571d;
-            border-radius: 22px;
-            padding: 14px 20px;
-            background: #131a2b;
-        }
+/* ================= MAIN ================= */
 
-        .wallet-title {
-            color: #9b9eab;
-            font-size: 12px;
-        }
+.container{
+    width:100%;
+    max-width:1150px;
+    margin:auto;
+    padding:16px;
+    padding-bottom:100px;
+}
 
-        .balance {
-            color: #ffc62d;
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 7px;
-        }
+.page{
+    display:none;
+}
 
-        .plus {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: none;
-            background: #ffc52c;
-            color: #101629;
-            font-size: 25px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.page.active{
+    display:block;
+}
 
-        .notification {
-            width: 68px;
-            border-radius: 20px;
-            border: 1px solid #075a78;
-            background: #10182b;
-            color: white;
-            font-size: 23px;
-        }
+/* ================= HERO ================= */
 
-        /* NAVIGATION */
-        .nav {
-            margin: 22px 0 15px;
-            padding: 10px;
-            display: flex;
-            gap: 5px;
-            overflow-x: auto;
-            background: #10182b;
-            border: 1px solid #07506d;
-            border-radius: 30px;
-        }
+.hero{
+    padding:35px 22px;
+    border-radius:25px;
+    border:1px solid #5a2020;
+    background:
+    radial-gradient(circle at top right,#681717,#1b0e0e 40%,#101010 75%);
+    margin-bottom:20px;
+}
 
-        .nav button {
-            white-space: nowrap;
-            border: none;
-            background: transparent;
-            color: #e9edf7;
-            padding: 13px 17px;
-            border-radius: 25px;
-            font-size: 15px;
-            font-weight: bold;
-        }
+.hero-small{
+    color:#ffc83d;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
 
-        .nav button.active {
-            background: #0ccfea;
-            color: #07111f;
-            box-shadow: 0 0 15px #00c9ed;
-        }
+.hero h1{
+    font-size:clamp(30px,7vw,55px);
+    margin:12px 0;
+}
 
-        .nav button:nth-child(3) {
-            color: #ffc52c;
-        }
+.hero p{
+    color:#aaa;
+    margin-bottom:20px;
+}
 
-        /* SECTION */
-        .section-title {
-            padding: 18px 20px;
-        }
+/* ================= BUTTON ================= */
 
-        .section-title h2 {
-            color: #15d7f2;
-            font-size: 21px;
-        }
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:13px 18px;
+    background:linear-gradient(135deg,#ff3636,#a50000);
+    color:#fff;
+    font-weight:bold;
+}
 
-        .section-title p {
-            color: #78899c;
-            margin-top: 5px;
-            font-size: 13px;
-        }
+.btn:hover{
+    opacity:.9;
+}
 
-        /* PRODUCTS */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            padding: 0 15px;
-        }
+.btn-dark{
+    background:#181818;
+    border:1px solid #333;
+}
 
-        .card {
-            position: relative;
-            background: #151c30;
-            border: 1px solid #075474;
-            border-radius: 25px;
-            padding: 20px;
-            min-height: 300px;
-            box-shadow: inset 0 0 20px rgba(0, 120, 180, .04);
-        }
+.btn-gold{
+    background:linear-gradient(135deg,#ffe16a,#a96c00);
+    color:#111;
+}
 
-        .hot {
-            position: absolute;
-            top: -13px;
-            right: -2px;
-            background: #ff8b00;
-            color: #111827;
-            padding: 7px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 12px;
-        }
+.full-btn{
+    width:100%;
+}
 
-        .product-top {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 22px;
-        }
+/* ================= GRID ================= */
 
-        .product-icon {
-            font-size: 42px;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
 
-        .type {
-            border: 1px solid #087b9e;
-            color: #19cbe9;
-            border-radius: 9px;
-            padding: 7px 10px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+@media(min-width:700px){
+    .grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
 
-        .card h3 {
-            font-size: 22px;
-            line-height: 1.4;
-        }
+/* ================= CARD ================= */
 
-        .card-info {
-            color: #5ed9ee;
-            margin-top: 12px;
-            font-size: 15px;
-        }
+.card{
+    background:linear-gradient(180deg,#171717,#101010);
+    border:1px solid #292929;
+    border-radius:17px;
+    padding:16px;
+}
 
-        .line {
-            height: 1px;
-            background: #263147;
-            margin: 35px 0 18px;
-        }
+.card:hover{
+    border-color:#6b2424;
+}
 
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.card h3{
+    margin:8px 0;
+}
 
-        .price {
-            color: #ffc52c;
-            font-size: 22px;
-            font-weight: bold;
-        }
+.muted{
+    color:#999;
+}
 
-        .buy {
-            width: 44px;
-            height: 44px;
-            border: none;
-            border-radius: 15px;
-            background: #202b42;
-            color: #a8b5c9;
-            font-size: 25px;
-        }
+.price{
+    color:#ffc83d;
+    font-size:21px;
+    font-weight:900;
+}
 
-        .buy:hover {
-            background: #09ccea;
-            color: #07111f;
-        }
+.badge{
+    display:inline-block;
+    background:#252525;
+    color:#ddd;
+    border-radius:20px;
+    padding:5px 9px;
+    font-size:11px;
+}
 
-        /* PAGES */
-        .page {
-            display: none;
-        }
+/* ================= SECTION ================= */
 
-        .page.active {
-            display: block;
-        }
+.section{
+    margin:25px 0;
+}
 
-        .empty {
-            margin: 30px 15px;
-            padding: 40px 20px;
-            text-align: center;
-            border: 1px solid #075474;
-            border-radius: 22px;
-            background: #151c30;
-            color: #8293a7;
-        }
+.section-title{
+    font-size:21px;
+    margin-bottom:13px;
+}
 
-        /* MOBILE */
-        @media (max-width: 500px) {
+/* ================= ACTION CARDS ================= */
 
-            .brand h1 {
-                font-size: 26px;
-            }
+.action-card{
+    cursor:pointer;
+    min-height:120px;
+}
 
-            .logo {
-                width: 65px;
-                height: 65px;
-            }
+.action-icon{
+    font-size:27px;
+}
 
-            .products {
-                gap: 12px;
-                padding: 0 10px;
-            }
+/* ================= PRODUCTS ================= */
 
-            .card {
-                padding: 15px;
-                min-height: 280px;
-            }
+.product-card{
+    display:flex;
+    flex-direction:column;
+}
 
-            .card h3 {
-                font-size: 18px;
-            }
+.product-card .buy{
+    margin-top:auto;
+}
 
-            .price {
-                font-size: 18px;
-            }
+/* ================= TABS ================= */
 
-            .product-icon {
-                font-size: 34px;
-            }
-        }
-    </style>
+.tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:5px;
+    margin-bottom:15px;
+}
+
+.tabs button{
+    white-space:nowrap;
+    background:#151515;
+    color:#aaa;
+    border:1px solid #303030;
+    padding:10px 14px;
+    border-radius:11px;
+}
+
+.tabs button.active{
+    background:#8f1515;
+    color:white;
+}
+
+/* ================= FORM ================= */
+
+.form-card{
+    background:#131313;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:18px;
+}
+
+label{
+    display:block;
+    color:#ccc;
+    font-size:13px;
+    margin:13px 0 6px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    background:#090909;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:11px;
+    padding:13px;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#d42626;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+@media(max-width:550px){
+    .form-row{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+    padding:13px;
+    border-radius:12px;
+    background:#191919;
+    border:1px solid #303030;
+    margin:10px 0;
+}
+
+.success{
+    border-color:#23613b;
+}
+
+.warning{
+    border-color:#695420;
+}
+
+.error{
+    border-color:#682727;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:1150px;
+    height:73px;
+    background:#0b0b0bf7;
+    border-top:1px solid #292929;
+    z-index:1000;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    padding:5px;
+}
+
+.nav-btn{
+    border:0;
+    background:transparent;
+    color:#777;
+    font-size:11px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+}
+
+.nav-btn span{
+    font-size:22px;
+}
+
+.nav-btn.active{
+    color:white;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    text-align:center;
+    color:#666;
+    padding:25px 15px;
+    font-size:12px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000c;
+    z-index:2000;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:700px;
+    max-height:90vh;
+    overflow:auto;
+    background:#111;
+    border:1px solid #333;
+    border-radius:25px 25px 0 0;
+    padding:20px;
+}
+
+@media(min-width:700px){
+    .modal{
+        align-items:center;
+    }
+
+    .modal-box{
+        border-radius:22px;
+    }
+}
+
+.close{
+    float:right;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#222;
+    color:#fff;
+    border:1px solid #444;
+    font-size:20px;
+}
+
+/* ================= TABLE ================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:10px;
+    text-align:left;
+    border-bottom:1px solid #292929;
+    font-size:13px;
+}
+
+/* ================= MENU ================= */
+
+.side-menu{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:1500;
+}
+
+.side-menu.show{
+    display:block;
+}
+
+.menu-box{
+    width:min(330px,90%);
+    height:100%;
+    background:#101010;
+    border-right:1px solid #333;
+    padding:20px;
+    overflow:auto;
+}
+
+.menu-item{
+    width:100%;
+    border:0;
+    background:#171717;
+    color:#fff;
+    padding:14px;
+    margin:5px 0;
+    border-radius:12px;
+    text-align:left;
+}
+
+/* ================= DESKTOP ================= */
+
+@media(min-width:900px){
+
+    .hero{
+        padding:50px;
+    }
+
+    .header{
+        padding-left:25px;
+        padding-right:25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<div class="app">
+<!-- =========================================================
+                         HEADER
+========================================================= -->
 
-    <!-- HEADER -->
-    <header class="header">
+<header class="header">
 
-        <div class="brand">
-            <div class="logo">💎</div>
+<button class="menu-btn" onclick="openMenu()">☰</button>
 
-            <div>
-                <h1>AG <span>TOP UP</span></h1>
-                <p>FREE FIRE STORE BD</p>
-            </div>
-        </div>
+<div class="logo">
+AG <span>D-M TOP UP</span>
+</div>
 
-        <div class="wallet-row">
+<div class="header-space"></div>
 
-            <div class="wallet">
-                <div class="wallet-title">AG WALLET</div>
+<button class="icon-btn" onclick="openPage('notifications')">
+🔔
+</button>
 
-                <div class="balance" id="balance">
-                    ৳350 BDT
-                </div>
-            </div>
+<button class="icon-btn" onclick="openPage('account')">
+👤
+</button>
 
-            <button class="plus" onclick="addMoney()">
-                +
-            </button>
+</header>
 
-            <button class="notification" onclick="notification()">
-                🔔
-            </button>
 
-        </div>
+<!-- =========================================================
+                         MAIN
+========================================================= -->
 
-        <!-- NAVIGATION -->
-        <nav class="nav">
+<main class="container">
 
-            <button class="active" onclick="showPage('home', this)">
-                🏠 HOME
-            </button>
 
-            <button onclick="showPage('orders', this)">
-                🧾 MY ORDERS
-            </button>
+<!-- ========================= HOME ========================= -->
 
-            <button onclick="showPage('money', this)">
-                💳 ADD MONEY
-            </button>
+<section id="home" class="page active">
 
-        </nav>
+<div class="hero">
 
-    </header>
+<div class="hero-small">
+ONLY FREE FIRE TOP UP + TOURNAMENT
+</div>
 
+<h1>🔥 AG D-M TOP UP</h1>
 
-    <!-- HOME -->
-    <main id="home" class="page active">
+<p>
+Fast • Secure • Easy
+</p>
 
-        <div class="section-title">
-            <h2>🔥 FREE FIRE TOP UP</h2>
-            <p>Select your Diamond package</p>
-        </div>
+<button class="btn" onclick="openPage('topup')">
+💎 TOP UP NOW
+</button>
 
-
-        <div class="products">
-
-            <!-- CARD 1 -->
-            <div class="card">
-
-                <div class="product-top">
-                    <div class="product-icon">💎</div>
-
-                    <div class="type">
-                        UID TOPUP
-                    </div>
-                </div>
-
-                <h3>1240<br>Diamond</h3>
-
-                <div class="card-info">
-                    ⚡ Best Value
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳820 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('1240 Diamond',820)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- CARD 2 -->
-            <div class="card">
-
-                <div class="hot">HOT</div>
-
-                <div class="product-top">
-                    <div class="product-icon">💎</div>
-
-                    <div class="type">
-                        UID TOPUP
-                    </div>
-                </div>
-
-                <h3>2530<br>Diamond</h3>
-
-                <div class="card-info">
-                    Mega Diamond Pack
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳1650 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('2530 Diamond',1650)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- CARD 3 -->
-            <div class="card">
-
-                <div class="product-top">
-                    <div class="product-icon">🎮</div>
-
-                    <div class="type">
-                        IN-GAME (ID PASS)
-                    </div>
-                </div>
-
-                <h3>100 Diamond<br>(In-Game)</h3>
-
-                <div class="card-info">
-                    ID & Password
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳80 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('100 Diamond In-Game',80)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- CARD 4 -->
-            <div class="card">
-
-                <div class="hot">HOT</div>
-
-                <div class="product-top">
-                    <div class="product-icon">🎮</div>
-
-                    <div class="type">
-                        IN-GAME (ID PASS)
-                    </div>
-                </div>
-
-                <h3>210 Diamond<br>(In-Game)</h3>
-
-                <div class="card-info">
-                    ID & Password
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳155 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('210 Diamond In-Game',155)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- CARD 5 -->
-            <div class="card">
-
-                <div class="product-top">
-                    <div class="product-icon">💎</div>
-
-                    <div class="type">
-                        UID TOPUP
-                    </div>
-                </div>
-
-                <h3>610<br>Diamond</h3>
-
-                <div class="card-info">
-                    ⚡ Fast Delivery
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳385 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('610 Diamond',385)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- CARD 6 -->
-            <div class="card">
-
-                <div class="hot">HOT</div>
-
-                <div class="product-top">
-                    <div class="product-icon">💎</div>
-
-                    <div class="type">
-                        UID TOPUP
-                    </div>
-                </div>
-
-                <h3>1240<br>Diamond</h3>
-
-                <div class="card-info">
-                    Mega Pack
-                </div>
-
-                <div class="line"></div>
-
-                <div class="price-row">
-                    <div class="price">৳820 BDT</div>
-
-                    <button class="buy"
-                        onclick="buyProduct('1240 Diamond Mega',820)">
-                        ✓
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- MY ORDERS -->
-    <main id="orders" class="page">
-
-        <div class="section-title">
-            <h2>🧾 MY ORDERS</h2>
-            <p>Your recent orders will appear here.</p>
-        </div>
-
-        <div id="orderList" class="empty">
-            No orders yet.
-        </div>
-
-    </main>
-
-
-    <!-- ADD MONEY -->
-    <main id="money" class="page">
-
-        <div class="section-title">
-            <h2>💳 ADD MONEY</h2>
-            <p>Add balance to your AG Wallet.</p>
-        </div>
-
-        <div class="empty">
-
-            <h3>AG WALLET</h3>
-
-            <br>
-
-            <p>
-                Current Balance:
-            </p>
-
-            <h2 style="color:#ffc52c;margin:10px;">
-                ৳350 BDT
-            </h2>
-
-            <br>
-
-            <button
-                onclick="addMoney()"
-                style="
-                padding:14px 30px;
-                border:0;
-                border-radius:20px;
-                background:#0ccfea;
-                color:#07111f;
-                font-weight:bold;
-                ">
-                ADD MONEY
-            </button>
-
-        </div>
-
-    </main>
+<button class="btn btn-dark" onclick="openPage('tournament')">
+🏆 JOIN TOURNAMENT
+</button>
 
 </div>
 
 
+<!-- QUICK ACTION -->
+
+<div class="section">
+
+<h2 class="section-title">
+⚡ Quick Actions
+</h2>
+
+<div class="grid">
+
+<div class="card action-card" onclick="openPage('topup')">
+<div class="action-icon">💎</div>
+<h3>FF TOP UP</h3>
+<div class="muted">UID Recharge</div>
+</div>
+
+<div class="card action-card" onclick="openPage('tournament')">
+<div class="action-icon">🏆</div>
+<h3>TOURNAMENT</h3>
+<div class="muted">Join Match</div>
+</div>
+
+<div class="card action-card" onclick="openPage('orders')">
+<div class="action-icon">📦</div>
+<h3>MY ORDERS</h3>
+<div class="muted">Track Orders</div>
+</div>
+
+<div class="card action-card" onclick="openPage('wallet')">
+<div class="action-icon">💵</div>
+<h3>ADD MONEY</h3>
+<div class="muted">Wallet</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- SPECIAL OFFER -->
+
+<div class="section">
+
+<h2 class="section-title">
+🔥 SPECIAL OFFER
+</h2>
+
+<div class="card">
+
+<span class="badge">
+LIMITED OFFER
+</span>
+
+<h3>240 Diamond</h3>
+
+<div class="price">
+BDT 158
+</div>
+
+<br>
+
+<button class="btn full-btn"
+onclick="selectProduct('240 Diamond',158)">
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+
+<!-- POPULAR -->
+
+<div class="section">
+
+<h2 class="section-title">
+💎 POPULAR TOP UP
+</h2>
+
+<div class="grid" id="popularProducts">
+</div>
+
+</div>
+
+
+<!-- MEMBERSHIP -->
+
+<div class="section">
+
+<h2 class="section-title">
+🎁 WEEKLY / MONTHLY
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Weekly</h3>
+
+<div class="price">
+BDT 158
+</div>
+
+<button class="btn full-btn"
+onclick="selectProduct('Weekly',158)">
+BUY
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Monthly</h3>
+
+<div class="price">
+BDT 790
+</div>
+
+<button class="btn full-btn"
+onclick="selectProduct('Monthly',790)">
+BUY
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOURNAMENT -->
+
+<div class="section">
+
+<h2 class="section-title">
+🏆 UPCOMING TOURNAMENT
+</h2>
+
+<div class="card">
+
+<span class="badge">
+🟢 UPCOMING
+</span>
+
+<h2>
+AG D-M WEEKLY CUP
+</h2>
+
+<p class="muted">
+Mode: Squad • Map: Bermuda
+</p>
+
+<p>
+Entry Fee:
+<b>৳50</b>
+</p>
+
+<p>
+Prize Pool:
+<b>৳5,000</b>
+</p>
+
+<p>
+Slots:
+<b>32/48</b>
+</p>
+
+<button class="btn full-btn"
+onclick="joinTournament()">
+JOIN NOW
+</button>
+
+</div>
+
+</div>
+
+
+<!-- HOW TO -->
+
+<div class="section">
+
+<h2 class="section-title">
+📖 HOW TO TOP UP
+</h2>
+
+<div class="card">
+
+1️⃣ UID দিন<br><br>
+
+2️⃣ Package নির্বাচন করুন<br><br>
+
+3️⃣ Payment করুন<br><br>
+
+4️⃣ Order Complete
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- =========================================================
+                       FF TOP UP
+========================================================= -->
+
+<section id="topup" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+🔥 FF TOP UP (UID)
+</h2>
+
+<div class="form-card">
+
+<label>
+Player UID
+</label>
+
+<input
+id="playerUID"
+placeholder="Enter Free Fire UID"
+>
+
+
+<button
+class="btn btn-dark"
+style="margin-top:10px"
+onclick="uidGuide()">
+
+❓ Where can I find UID?
+
+</button>
+
+
+<label>
+Region
+</label>
+
+<select id="region">
+
+<option>
+🇧🇩 Bangladesh
+</option>
+
+<option>
+🌍 Indonesia
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<!-- CATEGORY -->
+
+<div class="tabs" id="categoryTabs">
+</div>
+
+
+<!-- PRODUCTS -->
+
+<div class="grid" id="productList">
+</div>
+
+</section>
+
+
+<!-- =========================================================
+                       CHECKOUT
+========================================================= -->
+
+<section id="checkout" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+🧾 CHECKOUT
+</h2>
+
+<div class="form-card"
+id="checkoutSummary">
+
+</div>
+
+</div>
+
+
+<div class="form-card">
+
+<h3>
+Customer Information
+</h3>
+
+
+<div class="form-row">
+
+<div>
+
+<label>
+Name
+</label>
+
+<input id="customerName">
+
+</div>
+
+
+<div>
+
+<label>
+Phone
+</label>
+
+<input
+id="customerPhone"
+placeholder="01XXXXXXXXX">
+
+</div>
+
+</div>
+
+
+<label>
+Email
+</label>
+
+<input id="customerEmail">
+
+
+<!-- COUPON -->
+
+<label>
+🎁 Coupon
+</label>
+
+<div style="display:flex;gap:8px">
+
+<input
+id="couponCode"
+placeholder="Enter Code">
+
+<button
+class="btn btn-dark"
+onclick="applyCoupon()">
+
+APPLY
+
+</button>
+
+</div>
+
+<div id="couponResult">
+</div>
+
+
+<!-- PAYMENT -->
+
+<h3 style="margin-top:25px">
+💳 SELECT PAYMENT
+</h3>
+
+
+<div class="grid">
+
+<button
+class="btn btn-dark"
+onclick="choosePayment('bKash')">
+
+🟣 bKash
+
+</button>
+
+
+<button
+class="btn btn-dark"
+onclick="choosePayment('Nagad')">
+
+🟠 Nagad
+
+</button>
+
+
+<button
+class="btn btn-dark"
+onclick="choosePayment('Rocket')">
+
+🔵 Rocket
+
+</button>
+
+
+<button
+class="btn btn-dark"
+onclick="choosePayment('Wallet')">
+
+💰 Wallet
+
+</button>
+
+</div>
+
+
+<div
+id="paymentInfo"
+class="notice">
+
+Payment method নির্বাচন করুন।
+
+</div>
+
+
+<label>
+Transaction ID
+</label>
+
+<input
+id="transactionID"
+placeholder="Enter Transaction ID">
+
+
+<button
+class="btn full-btn"
+style="margin-top:15px"
+onclick="submitOrder()">
+
+SUBMIT PAYMENT
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+                       ORDERS
+========================================================= -->
+
+<section id="orders" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+📦 MY ORDERS
+</h2>
+
+
+<div class="tabs">
+
+<button class="active">
+All
+</button>
+
+<button>
+Pending
+</button>
+
+<button>
+Processing
+</button>
+
+<button>
+Completed
+</button>
+
+<button>
+Failed
+</button>
+
+<button>
+Cancelled
+</button>
+
+<button>
+Refunded
+</button>
+
+</div>
+
+
+<div id="orderList">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+                    TOURNAMENT
+========================================================= -->
+
+<section id="tournament" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+🏆 FREE FIRE TOURNAMENT
+</h2>
+
+
+<div class="tabs">
+
+<button class="active">
+🟢 UPCOMING
+</button>
+
+<button>
+🔴 LIVE
+</button>
+
+<button>
+⚫ COMPLETED
+</button>
+
+</div>
+
+
+<div class="card">
+
+<span class="badge">
+🟢 UPCOMING
+</span>
+
+<h2>
+AG D-M WEEKLY CUP
+</h2>
+
+<p>
+📅 Date:
+30 Sep 2026
+</p>
+
+<p>
+⏰ Time:
+9:00 PM
+</p>
+
+<p>
+🎮 Mode:
+Squad
+</p>
+
+<p>
+🗺 Map:
+Bermuda
+</p>
+
+<p>
+💵 Entry:
+৳50
+</p>
+
+<p>
+🏆 Prize:
+৳5,000
+</p>
+
+<p>
+👥 Slots:
+32/48
+</p>
+
+<button
+class="btn full-btn"
+onclick="joinTournament()">
+
+JOIN NOW
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RULES -->
+
+<div class="section">
+
+<h2 class="section-title">
+📜 TOURNAMENT RULES
+</h2>
+
+<div class="card">
+
+❌ No Hack<br><br>
+
+❌ No Cheat<br><br>
+
+✅ Correct UID<br><br>
+
+✅ Correct Team Information<br><br>
+
+✅ Match Time Follow<br><br>
+
+✅ Room Rules Follow<br><br>
+
+✅ Entry Rules<br><br>
+
+✅ Cancellation Rules<br><br>
+
+✅ Refund Rules<br><br>
+
+✅ Dispute Rules
+
+</div>
+
+</div>
+
+
+<!-- LEADERBOARD -->
+
+<div class="section">
+
+<h2 class="section-title">
+📊 LEADERBOARD
+</h2>
+
+<div class="card">
+
+<table>
+
+<tr>
+<th>#</th>
+<th>Team</th>
+<th>Kills</th>
+<th>Points</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Team Alpha</td>
+<td>12</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Team Bravo</td>
+<td>9</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Team X</td>
+<td>8</td>
+<td>20</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+                         WALLET
+========================================================= -->
+
+<section id="wallet" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+💰 MY WALLET
+</h2>
+
+
+<div class="hero">
+
+<div class="muted">
+Available Balance
+</div>
+
+<h1>
+৳250
+</h1>
+
+</div>
+
+
+<div class="form-card">
+
+<label>
+Amount
+</label>
+
+<input
+id="walletAmount"
+type="number"
+placeholder="BDT">
+
+
+<label>
+Payment Method
+</label>
+
+<select>
+
+<option>
+bKash
+</option>
+
+<option>
+Nagad
+</option>
+
+<option>
+Rocket
+</option>
+
+</select>
+
+
+<label>
+Transaction ID
+</label>
+
+<input
+id="walletTransaction"
+placeholder="Transaction ID">
+
+
+<button
+class="btn full-btn"
+onclick="addMoney()">
+
+SUBMIT DEPOSIT
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2 class="section-title">
+📜 WALLET TRANSACTIONS
+</h2>
+
+<div class="card">
+
+<div class="success">
++ ৳500 — Wallet Deposit
+</div>
+
+<br>
+
+<div>
+- ৳158 — FF Top Up
+</div>
+
+<br>
+
+<div>
+- ৳50 — Tournament Entry
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+                        ACCOUNT
+========================================================= -->
+
+<section id="account" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+👤 ACCOUNT
+</h2>
+
+
+<div class="card">
+
+<h2>
+AG D-M User
+</h2>
+
+<p class="muted">
+Username: demo_user
+</p>
+
+<br>
+
+<span class="badge">
+FREE USER
+</span>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card"
+onclick="openPage('orders')">
+
+📦
+
+<h3>
+My Orders
+</h3>
+
+</div>
+
+
+<div class="card"
+onclick="openPage('tournament')">
+
+🏆
+
+<h3>
+My Tournaments
+</h3>
+
+</div>
+
+
+<div class="card"
+onclick="openPage('wallet')">
+
+💰
+
+<h3>
+Wallet
+</h3>
+
+</div>
+
+
+<div class="card"
+onclick="openPage('notifications')">
+
+🔔
+
+<h3>
+Notifications
+</h3>
+
+</div>
+
+
+<div class="card">
+
+🔐
+
+<h3>
+Security
+</h3>
+
+</div>
+
+
+<div class="card">
+
+🏅
+
+<h3>
+Rank
+</h3>
+
+<p class="muted">
+Bronze → Silver → Gold → Platinum → Diamond → Master
+</p>
+
+</div>
+
+
+<div class="card">
+
+👑
+
+<h3>
+Premium
+</h3>
+
+</div>
+
+
+<div class="card"
+onclick="support()">
+
+🎧
+
+<h3>
+Support
+</h3>
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn btn-dark full-btn"
+onclick="alert('Demo logout')">
+
+🚪 LOGOUT
+
+</button>
+
+</section>
+
+
+<!-- =========================================================
+                     NOTIFICATIONS
+========================================================= -->
+
+<section id="notifications" class="page">
+
+<div class="section">
+
+<h2 class="section-title">
+🔔 NOTIFICATIONS
+</h2>
+
+
+<div class="notice success">
+✓ Order Completed
+</div>
+
+
+<div class="notice">
+🏆 Tournament Confirmed
+</div>
+
+
+<div class="notice">
+💰 Wallet Approved
+</div>
+
+
+<div class="notice">
+🔥 New Offer
+</div>
+
+
+<div class="notice warning">
+⚠️ Payment Pending
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================================================
+                         FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+🔥 AG D-M TOP UP
+
+<br><br>
+
+ONLY FREE FIRE TOP UP + TOURNAMENT
+
+<br><br>
+
+Terms & Conditions • Privacy Policy • Refund Policy • Tournament Rules
+
+</footer>
+
+
+<!-- =========================================================
+                    BOTTOM NAVIGATION
+========================================================= -->
+
+<nav class="bottom-nav">
+
+<button
+class="nav-btn active"
+data-page="home"
+onclick="openPage('home')">
+
+<span>🏠</span>
+Home
+
+</button>
+
+
+<button
+class="nav-btn"
+data-page="tournament"
+onclick="openPage('tournament')">
+
+<span>🏆</span>
+Tournament
+
+</button>
+
+
+<button
+class="nav-btn"
+data-page="wallet"
+onclick="openPage('wallet')">
+
+<span>💵</span>
+Add Money
+
+</button>
+
+
+<button
+class="nav-btn"
+data-page="orders"
+onclick="openPage('orders')">
+
+<span>🗂️</span>
+Orders
+
+</button>
+
+
+<button
+class="nav-btn"
+data-page="account"
+onclick="openPage('account')">
+
+<span>👤</span>
+Account
+
+</button>
+
+</nav>
+
+
+<!-- =========================================================
+                         MODAL
+========================================================= -->
+
+<div
+class="modal"
+id="modal"
+onclick="closeOutside(event)">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal()">
+
+×
+
+</button>
+
+<div id="modalContent">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+                      SIDE MENU
+========================================================= -->
+
+<div
+class="side-menu"
+id="sideMenu"
+onclick="closeMenuOutside(event)">
+
+<div class="menu-box">
+
+<h2>
+🔥 AG D-M TOP UP
+</h2>
+
+<br>
+
+
+<button
+class="menu-item"
+onclick="menuGo('home')">
+
+🏠 Home
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('topup')">
+
+💎 FF Top Up
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('tournament')">
+
+🏆 Tournament
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('orders')">
+
+📦 Orders
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('wallet')">
+
+💰 Wallet
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('account')">
+
+👤 Account
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="menuGo('notifications')">
+
+🔔 Notifications
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="support()">
+
+🎧 Support
+
+</button>
+
+
+<button
+class="menu-item"
+onclick="alert('Terms & Conditions')">
+
+📄 Legal
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+                       JAVASCRIPT
+========================================================= -->
+
 <script>
 
-    let orders = [];
+/* ================= DATA ================= */
 
-    function showPage(page, button) {
+const products = {
 
-        document.querySelectorAll(".page")
-            .forEach(p => p.classList.remove("active"));
+"Diamonds":[
 
-        document.getElementById(page)
-            .classList.add("active");
+["25 Diamond",22],
+["50 Diamond",35],
+["115 Diamond",79],
+["240 Diamond",158],
+["355 Diamond",235],
+["480 Diamond",332],
+["505 Diamond",340],
+["610 Diamond",400],
+["850 Diamond",560],
+["1090 Diamond",720],
+["1240 Diamond",800],
+["1720 Diamond",1120],
+["2530 Diamond",1610],
+["4010 Diamond",2686],
+["5060 Diamond",3360],
+["7590 Diamond",5040],
+["10120 Diamond",6720]
 
-        document.querySelectorAll(".nav button")
-            .forEach(b => b.classList.remove("active"));
+],
 
-        button.classList.add("active");
+"Weekly":[
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
+["Weekly",158],
+["2× Weekly",315],
+["3× Weekly",475],
+["4× Weekly",632],
+["5× Weekly",790],
+["Weekly Lite",0]
+
+],
+
+"Monthly":[
+
+["Monthly",790],
+["2× Monthly",1580],
+["3× Monthly",2370],
+["4× Monthly",3160],
+["5× Monthly",3950]
+
+],
+
+"FF ID Like":[
+
+["Daily Like",0],
+["Special Like",0],
+["Like Package",0]
+
+],
+
+"Indonesia":[
+
+["Indo Diamond",0],
+["Indo Weekly",0],
+["Indo Monthly",0],
+["Booyah Pass Indo",0],
+["Level Up Pass Indo",0]
+
+],
+
+"Booyah Pass":[
+
+["Booyah Pass",0]
+
+],
+
+"Level Up Pass":[
+
+["Level Up Pass Lv.6",0],
+["Level Up Pass Lv.10",0],
+["New Level Up Pass",0]
+
+],
+
+"Special Offers":[
+
+["Limited Offer",0],
+["Discount Offer",0],
+["Weekly/Monthly Offer",0],
+["Premium Offer",0]
+
+]
+
+};
 
 
-    function addMoney() {
+let currentCategory = "Diamonds";
 
-        alert(
-            "Add Money page opened.\n\nPayment methods can be connected later."
-        );
+let selectedProduct = null;
 
-    }
+let selectedPayment = "";
 
-
-    function notification() {
-
-        alert("No new notifications.");
-
-    }
+let discount = 0;
 
 
-    function buyProduct(name, price) {
+/* ================= PAGE ================= */
 
-        const confirmBuy =
-            confirm(
-                name +
-                "\nPrice: ৳" +
-                price +
-                " BDT\n\nDo you want to order?"
-            );
+function openPage(page){
 
-        if (!confirmBuy) return;
+document.querySelectorAll(".page")
+.forEach(function(p){
 
-        orders.push({
-            name: name,
-            price: price,
-            time: new Date().toLocaleString()
-        });
+p.classList.remove("active");
 
-        updateOrders();
-
-        alert(
-            "Order created successfully!\n\n" +
-            name +
-            "\n৳" +
-            price +
-            " BDT"
-        );
-
-    }
+});
 
 
-    function updateOrders() {
+const target =
+document.getElementById(page);
 
-        const list =
-            document.getElementById("orderList");
+if(target){
 
-        if (orders.length === 0) {
+target.classList.add("active");
 
-            list.innerHTML =
-                "No orders yet.";
+}
 
-            return;
-        }
 
-        list.innerHTML = "";
+document.querySelectorAll(".nav-btn")
+.forEach(function(btn){
 
-        orders.forEach((order, index) => {
+btn.classList.toggle(
+"active",
+btn.dataset.page === page
+);
 
-            const item =
-                document.createElement("div");
+});
 
-            item.style =
-                "padding:18px;" +
-                "margin-bottom:12px;" +
-                "background:#10182b;" +
-                "border:1px solid #075474;" +
-                "border-radius:18px;" +
-                "text-align:left;";
 
-            item.innerHTML =
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-                "<b style='color:#18dfff'>" +
-                order.name +
-                "</b>" +
 
-                "<br><br>" +
+if(page === "orders"){
 
-                "<span style='color:#ffc52c'>" +
-                "৳" + order.price +
-                " BDT" +
-                "</span>" +
+renderOrders();
 
-                "<br>" +
+}
 
-                "<small style='color:#75879c'>" +
-                order.time +
-                "</small>";
+}
 
-            list.appendChild(item);
 
-        });
+/* ================= CATEGORY ================= */
 
-    }
+function renderCategories(){
+
+const box =
+document.getElementById("categoryTabs");
+
+box.innerHTML = "";
+
+
+Object.keys(products).forEach(function(category){
+
+const button =
+document.createElement("button");
+
+button.textContent = category;
+
+if(category === currentCategory){
+
+button.classList.add("active");
+
+}
+
+
+button.onclick = function(){
+
+currentCategory = category;
+
+renderCategories();
+
+renderProducts();
+
+};
+
+
+box.appendChild(button);
+
+});
+
+}
+
+
+/* ================= PRODUCTS ================= */
+
+function renderProducts(){
+
+const box =
+document.getElementById("productList");
+
+box.innerHTML = "";
+
+
+products[currentCategory]
+.forEach(function(product){
+
+const name = product[0];
+
+const price = product[1];
+
+
+const card =
+document.createElement("div");
+
+card.className =
+"card product-card";
+
+
+card.innerHTML = `
+
+<span class="badge">
+${currentCategory}
+</span>
+
+<h3>
+${name}
+</h3>
+
+<div class="price">
+${price > 0 ? "BDT " + price : "Admin-set"}
+</div>
+
+<br>
+
+<button class="btn full-btn">
+SELECT
+</button>
+
+`;
+
+
+card.querySelector("button")
+.onclick = function(){
+
+selectProduct(name,price);
+
+};
+
+
+box.appendChild(card);
+
+});
+
+}
+
+
+/* ================= POPULAR ================= */
+
+function renderPopular(){
+
+const box =
+document.getElementById("popularProducts");
+
+const list = [
+
+["25 Diamond",22],
+["240 Diamond",158],
+["610 Diamond",400],
+["1240 Diamond",800]
+
+];
+
+
+list.forEach(function(product){
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<h3>
+${product[0]}
+</h3>
+
+<div class="price">
+BDT ${product[1]}
+</div>
+
+<br>
+
+<button class="btn full-btn">
+BUY NOW
+</button>
+
+`;
+
+card.querySelector("button")
+.onclick=function(){
+
+selectProduct(
+product[0],
+product[1]
+);
+
+};
+
+
+box.appendChild(card);
+
+});
+
+}
+
+
+/* ================= SELECT PRODUCT ================= */
+
+function selectProduct(name,price){
+
+const uid =
+document.getElementById("playerUID").value;
+
+
+if(!uid){
+
+openPage("topup");
+
+showModal(`
+
+<h2>
+⚠️ Player UID Required
+</h2>
+
+<p class="muted">
+প্রথমে আপনার Free Fire UID দিন।
+</p>
+
+<br>
+
+<button
+class="btn full-btn"
+onclick="closeModal()">
+
+OK
+
+</button>
+
+`);
+
+return;
+
+}
+
+
+selectedProduct = {
+
+name:name,
+price:price,
+uid:uid
+
+};
+
+
+discount = 0;
+
+
+document.getElementById(
+"checkoutSummary"
+).innerHTML = `
+
+<span class="badge">
+✓ SELECTED
+</span>
+
+<h2>
+${name}
+</h2>
+
+<p>
+Game:
+<b>Free Fire</b>
+</p>
+
+<p>
+UID:
+<b>${uid}</b>
+</p>
+
+<div class="price">
+${price > 0 ? "BDT " + price : "Admin-set"}
+</div>
+
+`;
+
+
+openPage("checkout");
+
+}
+
+
+/* ================= UID GUIDE ================= */
+
+function uidGuide(){
+
+showModal(`
+
+<h2>
+🧭 HOW TO FIND UID
+</h2>
+
+<br>
+
+<p>
+1️⃣ Free Fire Open করুন
+</p>
+
+<br>
+
+<p>
+2️⃣ Profile খুলুন
+</p>
+
+<br>
+
+<p>
+3️⃣ UID দেখুন
+</p>
+
+<br>
+
+<p>
+4️⃣ UID Copy করুন
+</p>
+
+<br>
+
+<p>
+5️⃣ এখানে Paste করুন
+</p>
+
+`);
+
+}
+
+
+/* ================= PAYMENT ================= */
+
+function choosePayment(method){
+
+selectedPayment = method;
+
+
+document.getElementById(
+"paymentInfo"
+).innerHTML = `
+
+<div class="notice success">
+
+Payment Method:
+<b>${method}</b>
+
+<br><br>
+
+Demo Payment Number:
+<b>01XXXXXXXXX</b>
+
+</div>
+
+`;
+
+}
+
+
+/* ================= COUPON ================= */
+
+function applyCoupon(){
+
+const code =
+document.getElementById(
+"couponCode"
+).value
+.trim()
+.toUpperCase();
+
+
+const result =
+document.getElementById(
+"couponResult"
+);
+
+
+if(code === "AG10"){
+
+discount = 10;
+
+
+result.innerHTML = `
+
+<div class="notice success">
+
+✓ 10% Demo Discount Applied
+
+</div>
+
+`;
+
+}else{
+
+discount = 0;
+
+
+result.innerHTML = `
+
+<div class="notice error">
+
+❌ Invalid Coupon
+
+</div>
+
+`;
+
+}
+
+}
+
+
+/* ================= ORDER ================= */
+
+function submitOrder(){
+
+if(!selectedProduct){
+
+alert(
+"প্রথমে Product নির্বাচন করুন।"
+);
+
+return;
+
+}
+
+
+const transaction =
+document.getElementById(
+"transactionID"
+).value.trim();
+
+
+if(!transaction){
+
+alert(
+"Transaction ID দিন।"
+);
+
+return;
+
+}
+
+
+if(!selectedPayment){
+
+alert(
+"Payment Method নির্বাচন করুন।"
+);
+
+return;
+
+}
+
+
+const finalPrice =
+Math.max(
+0,
+selectedProduct.price -
+(selectedProduct.price * discount / 100)
+);
+
+
+const order = {
+
+id:
+"AGDM-" +
+Date.now()
+.toString()
+.slice(-7),
+
+product:
+selectedProduct.name,
+
+price:
+finalPrice,
+
+uid:
+selectedProduct.uid,
+
+payment:
+selectedPayment,
+
+transaction:
+transaction,
+
+status:
+"Processing",
+
+date:
+new Date()
+.toLocaleString()
+
+};
+
+
+let orders =
+JSON.parse(
+localStorage.getItem(
+"AGDM_ORDERS"
+) || "[]"
+);
+
+
+orders.unshift(order);
+
+
+localStorage.setItem(
+"AGDM_ORDERS",
+JSON.stringify(orders)
+);
+
+
+showModal(`
+
+<h2>
+🎉 ORDER SUCCESS
+</h2>
+
+<br>
+
+<div class="notice success">
+
+Order ID:
+<b>${order.id}</b>
+
+<br><br>
+
+Product:
+<b>${order.product}</b>
+
+<br><br>
+
+UID:
+<b>${order.uid}</b>
+
+<br><br>
+
+Amount:
+<b>BDT ${order.price}</b>
+
+<br><br>
+
+Status:
+🟡 Processing
+
+</div>
+
+
+<button
+class="btn full-btn"
+onclick="
+closeModal();
+openPage('orders');
+">
+
+VIEW MY ORDER
+
+</button>
+
+`);
+
+}
+
+
+/* ================= ORDERS ================= */
+
+function renderOrders(){
+
+const box =
+document.getElementById(
+"orderList"
+);
+
+
+const orders =
+JSON.parse(
+localStorage.getItem(
+"AGDM_ORDERS"
+) || "[]"
+);
+
+
+if(!orders.length){
+
+box.innerHTML = `
+
+<div class="card">
+
+<h3>
+📦 No Orders Yet
+</h3>
+
+<p class="muted">
+আপনার এখনো কোনো Order নেই।
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="openPage('topup')">
+
+START TOP UP
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+box.innerHTML = "";
+
+
+orders.forEach(function(order){
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.style.marginBottom="12px";
+
+
+card.innerHTML = `
+
+<span class="badge">
+${order.status}
+</span>
+
+<h3>
+${order.product}
+</h3>
+
+<p>
+Order ID:
+${order.id}
+</p>
+
+<p>
+UID:
+${order.uid}
+</p>
+
+<p>
+Payment:
+${order.payment}
+</p>
+
+<div class="price">
+BDT ${order.price}
+</div>
+
+<br>
+
+<button class="btn btn-dark">
+ORDER DETAILS
+</button>
+
+`;
+
+
+card.querySelector("button")
+.onclick=function(){
+
+showOrder(order);
+
+};
+
+
+box.appendChild(card);
+
+});
+
+}
+
+
+/* ================= ORDER DETAILS ================= */
+
+function showOrder(order){
+
+showModal(`
+
+<h2>
+📦 ORDER DETAILS
+</h2>
+
+<br>
+
+<div class="card">
+
+Order ID:
+<b>${order.id}</b>
+
+<br><br>
+
+Date:
+${order.date}
+
+<br><br>
+
+Product:
+${order.product}
+
+<br><br>
+
+UID:
+${order.uid}
+
+<br><br>
+
+Payment:
+${order.payment}
+
+<br><br>
+
+Transaction ID:
+${order.transaction}
+
+<br><br>
+
+Payment Status:
+✓ Paid
+
+<br><br>
+
+Order Status:
+🟡 ${order.status}
+
+</div>
+
+<br>
+
+<div class="notice">
+
+✓ Order Created
+<br><br>
+
+✓ Payment Submitted
+<br><br>
+
+✓ Payment Verified
+<br><br>
+
+● Processing
+<br><br>
+
+○ Completed
+
+</div>
+
+`);
+
+}
+
+
+/* ================= TOURNAMENT ================= */
+
+function joinTournament(){
+
+showModal(`
+
+<h2>
+🏆 TEAM REGISTRATION
+</h2>
+
+<br>
+
+<label>
+Team Name
+</label>
+
+<input
+id="teamName"
+placeholder="Enter Team Name"
+>
+
+
+<label>
+Captain UID
+</label>
+
+<input
+placeholder="Captain UID"
+>
+
+
+<label>
+Player 2 UID
+</label>
+
+<input
+placeholder="Player 2 UID"
+>
+
+
+<label>
+Player 3 UID
+</label>
+
+<input
+placeholder="Player 3 UID"
+>
+
+
+<label>
+Player 4 UID
+</label>
+
+<input
+placeholder="Player 4 UID"
+>
+
+
+<button
+class="btn full-btn"
+style="margin-top:15px"
+onclick="tournamentContinue()">
+
+CONTINUE — ৳50
+
+</button>
+
+`);
+
+}
+
+
+function tournamentContinue(){
+
+showModal(`
+
+<h2>
+💳 TOURNAMENT PAYMENT
+</h2>
+
+<br>
+
+<div class="notice">
+
+Tournament:
+<b>AG D-M WEEKLY CUP</b>
+
+<br><br>
+
+Entry Fee:
+<b>BDT 50</b>
+
+</div>
+
+
+<button
+class="btn full-btn"
+onclick="tournamentSuccess()">
+
+CONFIRM & PAY
+
+</button>
+
+`);
+
+}
+
+
+function tournamentSuccess(){
+
+showModal(`
+
+<h2>
+🎟️ TOURNAMENT TICKET
+</h2>
+
+<br>
+
+<div class="notice success">
+
+✓ Registration Confirmed
+
+<br><br>
+
+Tournament:
+<b>AG D-M WEEKLY CUP</b>
+
+<br><br>
+
+Slot:
+<b>#33</b>
+
+<br><br>
+
+Entry Status:
+<b>Confirmed</b>
+
+</div>
+
+
+<div class="notice">
+
+⏰ Tournament starts at:
+<br>
+
+30 Sep 2026 • 9:00 PM
+
+</div>
+
+`);
+
+}
+
+
+/* ================= WALLET ================= */
+
+function addMoney(){
+
+const amount =
+document.getElementById(
+"walletAmount"
+).value;
+
+
+const transaction =
+document.getElementById(
+"walletTransaction"
+).value;
+
+
+if(!amount || !transaction){
+
+alert(
+"Amount এবং Transaction ID দিন।"
+);
+
+return;
+
+}
+
+
+showModal(`
+
+<h2>
+💵 DEPOSIT SUBMITTED
+</h2>
+
+<br>
+
+<div class="notice success">
+
+Amount:
+<b>BDT ${amount}</b>
+
+<br><br>
+
+Status:
+🟡 Verification Pending
+
+</div>
+
+`);
+
+}
+
+
+/* ================= SUPPORT ================= */
+
+function support(){
+
+showModal(`
+
+<h2>
+🎧 SUPPORT
+</h2>
+
+<br>
+
+<button
+class="btn btn-dark full-btn">
+
+💬 WhatsApp
+
+</button>
+
+<br><br>
+
+<button
+class="btn btn-dark full-btn">
+
+✈️ Telegram
+
+</button>
+
+<br><br>
+
+<button
+class="btn btn-dark full-btn">
+
+📧 Email
+
+</button>
+
+<br><br>
+
+<button
+class="btn btn-dark full-btn">
+
+🎫 Support Ticket
+
+</button>
+
+`);
+
+}
+
+
+/* ================= MODAL ================= */
+
+function showModal(html){
+
+document.getElementById(
+"modalContent"
+).innerHTML = html;
+
+
+document.getElementById(
+"modal"
+).classList.add("show");
+
+}
+
+
+function closeModal(){
+
+document.getElementById(
+"modal"
+).classList.remove("show");
+
+}
+
+
+function closeOutside(event){
+
+if(event.target.id === "modal"){
+
+closeModal();
+
+}
+
+}
+
+
+/* ================= SIDE MENU ================= */
+
+function openMenu(){
+
+document.getElementById(
+"sideMenu"
+).classList.add("show");
+
+}
+
+
+function closeMenu(){
+
+document.getElementById(
+"sideMenu"
+).classList.remove("show");
+
+}
+
+
+function closeMenuOutside(event){
+
+if(event.target.id === "sideMenu"){
+
+closeMenu();
+
+}
+
+}
+
+
+function menuGo(page){
+
+closeMenu();
+
+openPage(page);
+
+}
+
+
+/* ================= START ================= */
+
+renderCategories();
+
+renderProducts();
+
+renderPopular();
+
+renderOrders();
 
 </script>
 
