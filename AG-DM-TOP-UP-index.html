@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>AG D-M TOP UP</title>
+<style>
+:root{--bg:#070707;--card:#121212;--card2:#181818;--line:#292929;--txt:#fff;--muted:#aaa;--red:#ef2929;--gold:#ffc83d;--green:#31d875}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:1100px;margin:auto;padding-bottom:90px}
+header{height:64px;position:sticky;top:0;z-index:10;background:#090909ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px}.logo{font-weight:900}.logo b{color:var(--red)}.sp{flex:1}.ico{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#171717;color:#fff}
+main{padding:16px}.page{display:none}.page.active{display:block}.hero{padding:30px 20px;border:1px solid #482020;border-radius:24px;background:radial-gradient(circle at 90% 10%,#641919,#171010 45%,#101010);margin-bottom:18px}.hero h1{font-size:clamp(30px,7vw,52px);margin:8px 0}.tag{color:var(--gold);font-weight:bold}.muted{color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,#ff3434,#a90c0c);color:#fff;font-weight:800}.btn.alt{background:#1b1b1b;border:1px solid var(--line)}.btn.gold{background:linear-gradient(135deg,#ffe066,#a66b00);color:#111}.section{margin:22px 0}.section h2{font-size:20px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.card{background:linear-gradient(180deg,#171717,#101010);border:1px solid var(--line);border-radius:17px;padding:15px}.card h3{margin:5px 0}.price{font-size:20px;color:var(--gold);font-weight:900}.badge{display:inline-block;padding:5px 8px;border-radius:99px;background:#242424;color:#ddd;font-size:11px}.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}.tabs button{white-space:nowrap;background:#151515;color:#ddd;border:1px solid var(--line);padding:10px 13px;border-radius:11px}.tabs .active{background:#861313;color:#fff}.buy{width:100%;margin-top:12px}label{display:block;margin:12px 0 6px;color:#ccc;font-size:13px}input,select,textarea{width:100%;padding:13px;background:#0b0b0b;color:#fff;border:1px solid #333;border-radius:11px;outline:none}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notice{padding:12px;border:1px solid var(--line);border-radius:12px;background:#191919;margin:10px 0}.success{border-color:#235d38}.danger{border-color:#682727}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:20;width:min(1100px,100%);height:72px;background:#0b0b0bf5;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:5px}.nav{border:0;background:none;color:#999;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav span{font-size:21px}.nav.active{color:#fff}.modal{display:none;position:fixed;z-index:30;inset:0;background:#000b;align-items:flex-end;justify-content:center}.modal.open{display:flex}.sheet{width:min(700px,100%);max-height:92vh;overflow:auto;background:#111;border:1px solid #333;border-radius:24px 24px 0 0;padding:20px}.close{float:right;background:#222;color:#fff;border:1px solid #444;border-radius:50%;width:36px;height:36px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line);font-size:13px}footer{text-align:center;color:#777;padding:20px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}.hero{padding:45px}.modal{align-items:center}.sheet{border-radius:22px}.bottom{height:76px}}@media(max-width:560px){.formgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+<button class="ico" onclick="menu()">☰</button><div class="logo">AG <b>D-M TOP UP</b></div><div class="sp"></div>
+<button class="ico" onclick="go('notifications')">🔔</button><button class="ico" onclick="go('account')">👤</button>
+</header>
+
+<main>
+<section id="home" class="page active">
+<div class="hero"><div class="tag">ONLY FREE FIRE TOP UP + TOURNAMENT</div><h1>🔥 AG D-M TOP UP</h1><p class="muted">Fast • Secure • Easy</p><div class="row"><button class="btn" onclick="go('topup')">💎 TOP UP NOW</button><button class="btn alt" onclick="go('tournament')">🏆 JOIN TOURNAMENT</button></div></div>
+<div class="section"><h2>⚡ Quick Actions</h2><div class="grid">
+<div class="card" onclick="go('topup')">💎<h3>FF TOP UP</h3><span class="muted">UID Recharge</span></div>
+<div class="card" onclick="go('tournament')">🏆<h3>TOURNAMENT</h3><span class="muted">Join Match</span></div>
+<div class="card" onclick="go('orders')">📦<h3>MY ORDERS</h3><span class="muted">Track Orders</span></div>
+<div class="card" onclick="go('wallet')">💵<h3>ADD MONEY</h3><span class="muted">Wallet</span></div>
+</div></div>
+<div class="section"><h2>🔥 Special Offer</h2><div class="card"><h3>240 Diamond</h3><div class="price">BDT 158</div><button class="btn buy" onclick="pick('240 Diamond',158)">BUY NOW</button></div></div>
+<div class="section"><h2>💎 Popular Top Up</h2><div id="popular" class="grid"></div></div>
+<div class="section"><h2>🏆 Upcoming Tournament</h2><div class="card"><span class="badge">🟢 UPCOMING</span><h2>AG D-M WEEKLY CUP</h2><p>Squad • Bermuda</p><p>Entry: <b>৳50</b> • Prize: <b>৳5,000</b> • Slots: 32/48</p><button class="btn buy" onclick="joinTournament()">JOIN NOW</button></div></div>
+<div class="section"><h2>📖 How to Top Up</h2><div class="card">1️⃣ UID দিন<br>2️⃣ Package নির্বাচন করুন<br>3️⃣ Payment করুন<br>4️⃣ Order Complete</div></div>
+</section>
+
+<section id="topup" class="page">
+<div class="section"><h2>🔥 FF TOP UP (UID)</h2><div class="card">
+<label>Player UID</label><input id="uid" placeholder="Enter Free Fire UID">
+<button class="btn alt" style="margin-top:10px" onclick="uidGuide()">❓ Where can I find UID?</button>
+<label>Region</label><select><option>🇧🇩 Bangladesh</option><option>🌍 Indonesia</option></select>
+</div></div>
+<div class="tabs" id="tabs"></div><div id="products" class="grid"></div>
+</section>
+
+<section id="checkout" class="page">
+<div class="section"><h2>🧾 CHECKOUT</h2><div class="card" id="summary"></div></div>
+<div class="card">
+<div class="formgrid"><div><label>Name</label><input id="name"></div><div><label>Phone</label><input id="phone" placeholder="01XXXXXXXXX"></div></div>
+<label>Email</label><input id="email">
+<label>Coupon</label><div class="row"><input id="coupon" placeholder="AG10 (demo)"><button class="btn alt" onclick="coupon()">APPLY</button></div><div id="couponMsg"></div>
+<h3>💳 Payment</h3><div class="grid"><button class="btn alt" onclick="pay('bKash')">🟣 bKash</button><button class="btn alt" onclick="pay('Nagad')">🟠 Nagad</button><button class="btn alt" onclick="pay('Rocket')">🔵 Rocket</button><button class="btn alt" onclick="pay('Wallet')">💰 Wallet</button></div>
+<div id="payMsg" class="notice">Select payment method.</div>
+<label>Transaction ID</label><input id="trx">
+<button class="btn" style="width:100%;margin-top:15px" onclick="submitOrder()">SUBMIT PAYMENT</button>
+</div>
+</section>
+
+<section id="orders" class="page"><div class="section"><h2>📦 MY ORDERS</h2><div class="tabs"><button class="active">All</button><button>Pending</button><button>Processing</button><button>Completed</button><button>Failed</button><button>Refunded</button></div><div id="ordersBox"></div></div></section>
+
+<section id="tournament" class="page">
+<div class="section"><h2>🏆 FREE FIRE TOURNAMENT</h2><div class="tabs"><button class="active">🟢 Upcoming</button><button>🔴 Live</button><button>⚫ Completed</button></div>
+<div class="card"><span class="badge">🟢 UPCOMING</span><h2>AG D-M WEEKLY CUP</h2><p>Date: 30 Sep 2026 • 9:00 PM</p><p>Mode: Squad • Map: Bermuda</p><p>Entry Fee: ৳50 • Prize Pool: ৳5,000</p><p>Slots: 32/48</p><button class="btn" onclick="joinTournament()">JOIN NOW</button></div></div>
+<div class="section"><h2>📜 Rules</h2><div class="card">No Hack • No Cheat • Correct UID • Correct Team Information • Match Time Follow • Room Rules Follow • Cancellation/Refund/Dispute Rules</div></div>
+<div class="section"><h2>📊 Leaderboard</h2><div class="card"><table><tr><th>#</th><th>Team</th><th>Kills</th><th>Points</th></tr><tr><td>1</td><td>Team Alpha</td><td>12</td><td>28</td></tr><tr><td>2</td><td>Team Bravo</td><td>9</td><td>24</td></tr><tr><td>3</td><td>Team X</td><td>8</td><td>20</td></tr></table></div></div>
+</section>
+
+<section id="wallet" class="page"><div class="section"><h2>💰 MY WALLET</h2><div class="hero"><span class="muted">Available Balance</span><h1>৳250</h1></div><div class="card"><label>Amount</label><input id="amount" type="number" placeholder="BDT"><label>Payment</label><select><option>bKash</option><option>Nagad</option><option>Rocket</option></select><label>Transaction ID</label><input id="depositTrx"><button class="btn" style="width:100%;margin-top:12px" onclick="deposit()">SUBMIT DEPOSIT</button></div></div><div class="section"><h2>📜 Transactions</h2><div class="card">+ ৳500 — Wallet Deposit<br><br>- ৳158 — FF Top Up<br><br>- ৳50 — Tournament Entry</div></div></section>
+
+<section id="account" class="page"><div class="section"><h2>👤 ACCOUNT</h2><div class="card"><h2>AG D-M User</h2><p class="muted">Username: demo_user</p><span class="badge">Free User</span></div></div><div class="grid">
+<div class="card" onclick="go('orders')">📦<h3>My Orders</h3></div><div class="card" onclick="go('tournament')">🏆<h3>My Tournaments</h3></div><div class="card" onclick="go('wallet')">💰<h3>Wallet</h3></div><div class="card" onclick="go('notifications')">🔔<h3>Notifications</h3></div><div class="card">🔐<h3>Security</h3></div><div class="card">🏅<h3>Rank</h3><p>Bronze → Silver → Gold → Platinum → Diamond → Master</p></div><div class="card">👑<h3>Premium</h3></div><div class="card" onclick="support()">🎧<h3>Support</h3></div></div><button class="btn alt" style="width:100%;margin-top:15px">🚪 Logout</button></section>
+
+<section id="notifications" class="page"><div class="section"><h2>🔔 NOTIFICATIONS</h2><div class="notice success">✓ Order Completed</div><div class="notice">🏆 Tournament Confirmed</div><div class="notice">💰 Wallet Approved</div><div class="notice">🔥 New Offer</div><div class="notice danger">⚠️ Payment Pending</div></div></section>
+</main>
+<footer>🔥 AG D-M TOP UP<br>ONLY FREE FIRE TOP UP + TOURNAMENT<br><small>Terms • Privacy • Refund • Tournament Rules</small></footer>
+</div>
+
+<nav class="bottom"><button class="nav active" data-page="home" onclick="go('home')"><span>🏠</span>Home</button><button class="nav" data-page="tournament" onclick="go('tournament')"><span>🏆</span>Tournament</button><button class="nav" data-page="wallet" onclick="go('wallet')"><span>💵</span>Add Money</button><button class="nav" data-page="orders" onclick="go('orders')"><span>🗂️</span>Orders</button><button class="nav" data-page="account" onclick="go('account')"><span>👤</span>Account</button></nav>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+
+<script>
+const data={
+"Diamonds":[["25 Diamond",22],["50 Diamond",35],["115 Diamond",79],["240 Diamond",158],["355 Diamond",235],["480 Diamond",332],["505 Diamond",340],["610 Diamond",400],["850 Diamond",560],["1090 Diamond",720],["1240 Diamond",800],["1720 Diamond",1120],["2530 Diamond",1610],["4010 Diamond",2686],["5060 Diamond",3360],["7590 Diamond",5040],["10120 Diamond",6720]],
+"Weekly":[["Weekly",158],["2× Weekly",315],["3× Weekly",475],["4× Weekly",632],["5× Weekly",790],["Weekly Lite",0]],
+"Monthly":[["Monthly",790],["2× Monthly",1580],["3× Monthly",2370],["4× Monthly",3160],["5× Monthly",3950]],
+"FF ID Like":[["Daily Like",0],["Special Like",0],["Like Package",0]],
+"Indonesia":[["Indo Diamond",0],["Indo Weekly",0],["Indo Monthly",0],["Booyah Pass Indo",0],["Level Up Pass Indo",0]],
+"Booyah Pass":[["Booyah Pass",0]],
+"Level Up Pass":[["Level Up Pass Lv.6",0],["Level Up Pass Lv.10",0],["New Level Up Pass",0]],
+"Special Offers":[["Limited Offer",0],["Discount Offer",0],["Weekly/Monthly Offer",0],["Premium Offer",0]]
+};
+let cat="Diamonds",selected=null,payment="";
+function go(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.page===id));scrollTo({top:0,behavior:"smooth"});if(id==="orders")renderOrders()}
+function renderTabs(){let x=document.getElementById("tabs");x.innerHTML="";Object.keys(data).forEach(k=>{let b=document.createElement("button");b.textContent=k;b.className=k===cat?"active":"";b.onclick=()=>{cat=k;renderTabs();renderProducts()};x.appendChild(b)})}
+function renderProducts(){let x=document.getElementById("products");x.innerHTML="";data[cat].forEach(([n,p])=>{let c=document.createElement("div");c.className="card";c.innerHTML=`<span class="badge">${cat}</span><h3>${n}</h3><div class="price">${p?"BDT "+p:"Admin-set"}</div><button class="btn buy">SELECT</button>`;c.querySelector("button").onclick=()=>pick(n,p);x.appendChild(c)})}
+function pick(n,p){selected={n,p};if(!document.getElementById("uid").value){go("topup");alert("আগে Player UID দিন।");return}document.getElementById("summary").innerHTML=`<div class="notice success">✓ SELECTED</div><h3>${n}</h3><p>Game: Free Fire</p><p>UID: <b>${document.getElementById("uid").value}</b></p><div class="price">${p?"BDT "+p:"Admin-set"}</div>`;go("checkout")}
+function pay(x){payment=x;document.getElementById("payMsg").textContent=x==="Wallet"?"Wallet payment selected.":"Payment Method: "+x+" | Demo Number: 01XXXXXXXXX"}
+function coupon(){let x=document.getElementById("coupon").value.toUpperCase();document.getElementById("couponMsg").innerHTML=x==="AG10"?'<div class="notice success">10% demo discount applied.</div>':'<div class="notice danger">Invalid coupon.</div>'}
+function submitOrder(){if(!selected)return alert("Select a product.");if(!document.getElementById("trx").value)return alert("Transaction ID দিন।");let a=JSON.parse(localStorage.getItem("agdm_orders")||"[]");let o={id:"AGDM-"+Date.now().toString().slice(-6),product:selected.n,price:selected.p,uid:document.getElementById("uid").value,status:"Processing",payment:payment||"Not selected",trx:document.getElementById("trx").value};a.unshift(o);localStorage.setItem("agdm_orders",JSON.stringify(a));document.getElementById("modalBody").innerHTML=`<h2>🎉 ORDER SUCCESS</h2><div class="notice success">Order ID: <b>${o.id}</b><br>Product: ${o.product}<br>UID: ${o.uid}<br>Amount: BDT ${o.price}<br>Status: Processing</div><button class="btn" onclick="closeModal();go('orders')">VIEW ORDER</button>`;openModal()}
+function renderOrders(){let x=document.getElementById("ordersBox"),a=JSON.parse(localStorage.getItem("agdm_orders")||"[]");x.innerHTML=a.length?a.map(o=>`<div class="card" style="margin-top:12px"><span class="badge">${o.status}</span><h3>${o.product}</h3><p>Order ID: ${o.id}</p><p>UID: ${o.uid}</p><div class="price">BDT ${o.price}</div><button class="btn alt" onclick='details(${JSON.stringify(o)})'>ORDER DETAILS</button></div>`).join(""):'<div class="card"><h3>📦 No Orders Yet</h3><button class="btn" onclick="go(\\'topup\\')">START TOP UP</button></div>'}
+function details(o){document.getElementById("modalBody").innerHTML=`<h2>📦 ORDER DETAILS</h2><div class="card">Order ID: ${o.id}<br><br>Product: ${o.product}<br><br>UID: ${o.uid}<br><br>Payment: ${o.payment}<br><br>Transaction: ${o.trx}<br><br>Status: ${o.status}</div>`;openModal()}
+function joinTournament(){document.getElementById("modalBody").innerHTML=`<h2>🏆 TEAM REGISTRATION</h2><label>Team Name</label><input><label>Captain</label><input placeholder="UID"><label>Player 2</label><input placeholder="UID"><label>Player 3</label><input placeholder="UID"><label>Player 4</label><input placeholder="UID"><button class="btn" style="width:100%;margin-top:15px" onclick="alert('Demo registration saved. Payment step next.')">CONTINUE — ৳50</button>`;openModal()}
+function uidGuide(){document.getElementById("modalBody").innerHTML="<h2>🧭 HOW TO FIND UID</h2><p>1. Free Fire Open করুন</p><p>2. Profile খুলুন</p><p>3. UID দেখুন</p><p>4. Copy করুন</p><p>5. এখানে Paste করুন</p>";openModal()}
+function deposit(){if(!document.getElementById("amount").value||!document.getElementById("depositTrx").value)return alert("Amount ও Transaction ID দিন।");alert("Demo deposit submitted for admin verification.")}
+function support(){document.getElementById("modalBody").innerHTML="<h2>🎧 SUPPORT</h2><p>💬 WhatsApp</p><p>✈️ Telegram</p><p>📧 Email</p><p>🎫 Support Ticket</p>";openModal()}
+function menu(){document.getElementById("modalBody").innerHTML='<h2>☰ MENU</h2><div class="grid">'+[["🏠","Home","home"],["💎","FF Top Up","topup"],["🏆","Tournament","tournament"],["📦","Orders","orders"],["💰","Wallet","wallet"],["👤","Account","account"],["🔔","Notifications","notifications"]].map(a=>`<button class="card" onclick="closeModal();go('${a[2]}')">${a[0]}<h3>${a[1]}</h3></button>`).join("")+"</div>";openModal()}
+function openModal(){document.getElementById("modal").classList.add("open")}function closeModal(){document.getElementById("modal").classList.remove("open")}
+document.getElementById("popular").innerHTML=[["25 Diamond",22],["240 Diamond",158],["610 Diamond",400],["1240 Diamond",800]].map(x=>`<div class="card"><h3>${x[0]}</h3><div class="price">BDT ${x[1]}</div><button class="btn buy" onclick="pick('${x[0]}',${x[1]})">BUY</button></div>`).join("");
+renderTabs();renderProducts();renderOrders();
+</script>
+</body>
+</html>
