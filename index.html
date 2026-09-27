@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AG TOP UP</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0b1020;
+            color: #ffffff;
+        }
+
+        .app {
+            max-width: 700px;
+            margin: auto;
+            min-height: 100vh;
+            padding-bottom: 30px;
+        }
+
+        /* HEADER */
+        .header {
+            padding: 25px 20px 18px;
+            background: #101629;
+            border-bottom: 1px solid #123c59;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            border: 3px solid #18cfff;
+            box-shadow: 0 0 15px #008cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .brand h1 {
+            font-size: 31px;
+            letter-spacing: 1px;
+        }
+
+        .brand h1 span {
+            color: #18dfff;
+        }
+
+        .brand p {
+            color: #13a9c9;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* WALLET */
+        .wallet-row {
+            display: flex;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .wallet {
+            flex: 1;
+            border: 1px solid #75571d;
+            border-radius: 22px;
+            padding: 14px 20px;
+            background: #131a2b;
+        }
+
+        .wallet-title {
+            color: #9b9eab;
+            font-size: 12px;
+        }
+
+        .balance {
+            color: #ffc62d;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 7px;
+        }
+
+        .plus {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: #ffc52c;
+            color: #101629;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .notification {
+            width: 68px;
+            border-radius: 20px;
+            border: 1px solid #075a78;
+            background: #10182b;
+            color: white;
+            font-size: 23px;
+        }
+
+        /* NAVIGATION */
+        .nav {
+            margin: 22px 0 15px;
+            padding: 10px;
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            background: #10182b;
+            border: 1px solid #07506d;
+            border-radius: 30px;
+        }
+
+        .nav button {
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            color: #e9edf7;
+            padding: 13px 17px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .nav button.active {
+            background: #0ccfea;
+            color: #07111f;
+            box-shadow: 0 0 15px #00c9ed;
+        }
+
+        .nav button:nth-child(3) {
+            color: #ffc52c;
+        }
+
+        /* SECTION */
+        .section-title {
+            padding: 18px 20px;
+        }
+
+        .section-title h2 {
+            color: #15d7f2;
+            font-size: 21px;
+        }
+
+        .section-title p {
+            color: #78899c;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            padding: 0 15px;
+        }
+
+        .card {
+            position: relative;
+            background: #151c30;
+            border: 1px solid #075474;
+            border-radius: 25px;
+            padding: 20px;
+            min-height: 300px;
+            box-shadow: inset 0 0 20px rgba(0, 120, 180, .04);
+        }
+
+        .hot {
+            position: absolute;
+            top: -13px;
+            right: -2px;
+            background: #ff8b00;
+            color: #111827;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .product-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .product-icon {
+            font-size: 42px;
+        }
+
+        .type {
+            border: 1px solid #087b9e;
+            color: #19cbe9;
+            border-radius: 9px;
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .card-info {
+            color: #5ed9ee;
+            margin-top: 12px;
+            font-size: 15px;
+        }
+
+        .line {
+            height: 1px;
+            background: #263147;
+            margin: 35px 0 18px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #ffc52c;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .buy {
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 15px;
+            background: #202b42;
+            color: #a8b5c9;
+            font-size: 25px;
+        }
+
+        .buy:hover {
+            background: #09ccea;
+            color: #07111f;
+        }
+
+        /* PAGES */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .empty {
+            margin: 30px 15px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid #075474;
+            border-radius: 22px;
+            background: #151c30;
+            color: #8293a7;
+        }
+
+        /* MOBILE */
+        @media (max-width: 500px) {
+
+            .brand h1 {
+                font-size: 26px;
+            }
+
+            .logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .products {
+                gap: 12px;
+                padding: 0 10px;
+            }
+
+            .card {
+                padding: 15px;
+                min-height: 280px;
+            }
+
+            .card h3 {
+                font-size: 18px;
+            }
+
+            .price {
+                font-size: 18px;
+            }
+
+            .product-icon {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="logo">💎</div>
+
+            <div>
+                <h1>AG <span>TOP UP</span></h1>
+                <p>FREE FIRE STORE BD</p>
+            </div>
+        </div>
+
+        <div class="wallet-row">
+
+            <div class="wallet">
+                <div class="wallet-title">AG WALLET</div>
+
+                <div class="balance" id="balance">
+                    ৳350 BDT
+                </div>
+            </div>
+
+            <button class="plus" onclick="addMoney()">
+                +
+            </button>
+
+            <button class="notification" onclick="notification()">
+                🔔
+            </button>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="nav">
+
+            <button class="active" onclick="showPage('home', this)">
+                🏠 HOME
+            </button>
+
+            <button onclick="showPage('orders', this)">
+                🧾 MY ORDERS
+            </button>
+
+            <button onclick="showPage('money', this)">
+                💳 ADD MONEY
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+    <main id="home" class="page active">
+
+        <div class="section-title">
+            <h2>🔥 FREE FIRE TOP UP</h2>
+            <p>Select your Diamond package</p>
+        </div>
+
+
+        <div class="products">
+
+            <!-- CARD 1 -->
+            <div class="card">
+
+                <div class="product-top">
+                    <div class="product-icon">💎</div>
+
+                    <div class="type">
+                        UID TOPUP
+                    </div>
+                </div>
+
+                <h3>1240<br>Diamond</h3>
+
+                <div class="card-info">
+                    ⚡ Best Value
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳820 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('1240 Diamond',820)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="card">
+
+                <div class="hot">HOT</div>
+
+                <div class="product-top">
+                    <div class="product-icon">💎</div>
+
+                    <div class="type">
+                        UID TOPUP
+                    </div>
+                </div>
+
+                <h3>2530<br>Diamond</h3>
+
+                <div class="card-info">
+                    Mega Diamond Pack
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳1650 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('2530 Diamond',1650)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="card">
+
+                <div class="product-top">
+                    <div class="product-icon">🎮</div>
+
+                    <div class="type">
+                        IN-GAME (ID PASS)
+                    </div>
+                </div>
+
+                <h3>100 Diamond<br>(In-Game)</h3>
+
+                <div class="card-info">
+                    ID & Password
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳80 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('100 Diamond In-Game',80)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="card">
+
+                <div class="hot">HOT</div>
+
+                <div class="product-top">
+                    <div class="product-icon">🎮</div>
+
+                    <div class="type">
+                        IN-GAME (ID PASS)
+                    </div>
+                </div>
+
+                <h3>210 Diamond<br>(In-Game)</h3>
+
+                <div class="card-info">
+                    ID & Password
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳155 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('210 Diamond In-Game',155)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+            <div class="card">
+
+                <div class="product-top">
+                    <div class="product-icon">💎</div>
+
+                    <div class="type">
+                        UID TOPUP
+                    </div>
+                </div>
+
+                <h3>610<br>Diamond</h3>
+
+                <div class="card-info">
+                    ⚡ Fast Delivery
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳385 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('610 Diamond',385)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+            <div class="card">
+
+                <div class="hot">HOT</div>
+
+                <div class="product-top">
+                    <div class="product-icon">💎</div>
+
+                    <div class="type">
+                        UID TOPUP
+                    </div>
+                </div>
+
+                <h3>1240<br>Diamond</h3>
+
+                <div class="card-info">
+                    Mega Pack
+                </div>
+
+                <div class="line"></div>
+
+                <div class="price-row">
+                    <div class="price">৳820 BDT</div>
+
+                    <button class="buy"
+                        onclick="buyProduct('1240 Diamond Mega',820)">
+                        ✓
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- MY ORDERS -->
+    <main id="orders" class="page">
+
+        <div class="section-title">
+            <h2>🧾 MY ORDERS</h2>
+            <p>Your recent orders will appear here.</p>
+        </div>
+
+        <div id="orderList" class="empty">
+            No orders yet.
+        </div>
+
+    </main>
+
+
+    <!-- ADD MONEY -->
+    <main id="money" class="page">
+
+        <div class="section-title">
+            <h2>💳 ADD MONEY</h2>
+            <p>Add balance to your AG Wallet.</p>
+        </div>
+
+        <div class="empty">
+
+            <h3>AG WALLET</h3>
+
+            <br>
+
+            <p>
+                Current Balance:
+            </p>
+
+            <h2 style="color:#ffc52c;margin:10px;">
+                ৳350 BDT
+            </h2>
+
+            <br>
+
+            <button
+                onclick="addMoney()"
+                style="
+                padding:14px 30px;
+                border:0;
+                border-radius:20px;
+                background:#0ccfea;
+                color:#07111f;
+                font-weight:bold;
+                ">
+                ADD MONEY
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    let orders = [];
+
+    function showPage(page, button) {
+
+        document.querySelectorAll(".page")
+            .forEach(p => p.classList.remove("active"));
+
+        document.getElementById(page)
+            .classList.add("active");
+
+        document.querySelectorAll(".nav button")
+            .forEach(b => b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    function addMoney() {
+
+        alert(
+            "Add Money page opened.\n\nPayment methods can be connected later."
+        );
+
+    }
+
+
+    function notification() {
+
+        alert("No new notifications.");
+
+    }
+
+
+    function buyProduct(name, price) {
+
+        const confirmBuy =
+            confirm(
+                name +
+                "\nPrice: ৳" +
+                price +
+                " BDT\n\nDo you want to order?"
+            );
+
+        if (!confirmBuy) return;
+
+        orders.push({
+            name: name,
+            price: price,
+            time: new Date().toLocaleString()
+        });
+
+        updateOrders();
+
+        alert(
+            "Order created successfully!\n\n" +
+            name +
+            "\n৳" +
+            price +
+            " BDT"
+        );
+
+    }
+
+
+    function updateOrders() {
+
+        const list =
+            document.getElementById("orderList");
+
+        if (orders.length === 0) {
+
+            list.innerHTML =
+                "No orders yet.";
+
+            return;
+        }
+
+        list.innerHTML = "";
+
+        orders.forEach((order, index) => {
+
+            const item =
+                document.createElement("div");
+
+            item.style =
+                "padding:18px;" +
+                "margin-bottom:12px;" +
+                "background:#10182b;" +
+                "border:1px solid #075474;" +
+                "border-radius:18px;" +
+                "text-align:left;";
+
+            item.innerHTML =
+
+                "<b style='color:#18dfff'>" +
+                order.name +
+                "</b>" +
+
+                "<br><br>" +
+
+                "<span style='color:#ffc52c'>" +
+                "৳" + order.price +
+                " BDT" +
+                "</span>" +
+
+                "<br>" +
+
+                "<small style='color:#75879c'>" +
+                order.time +
+                "</small>";
+
+            list.appendChild(item);
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
