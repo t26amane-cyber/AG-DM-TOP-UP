@@ -1,2951 +1,860 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-
-<title>AG D-M TOP UP</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-    background:#070707;
-    color:#fff;
-    min-height:100vh;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-/* ================= HEADER ================= */
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:999;
-    height:65px;
-    background:#0d0d0d;
-    border-bottom:1px solid #292929;
-    display:flex;
-    align-items:center;
-    padding:0 14px;
-    gap:12px;
-}
-
-.menu-btn,
-.icon-btn{
-    width:42px;
-    height:42px;
-    border:1px solid #292929;
-    border-radius:12px;
-    background:#171717;
-    color:white;
-    font-size:20px;
-}
-
-.logo{
-    font-size:19px;
-    font-weight:900;
-}
-
-.logo span{
-    color:#ff2929;
-}
-
-.header-space{
-    flex:1;
-}
-
-/* ================= MAIN ================= */
-
-.container{
-    width:100%;
-    max-width:1150px;
-    margin:auto;
-    padding:16px;
-    padding-bottom:100px;
-}
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    padding:35px 22px;
-    border-radius:25px;
-    border:1px solid #5a2020;
-    background:
-    radial-gradient(circle at top right,#681717,#1b0e0e 40%,#101010 75%);
-    margin-bottom:20px;
-}
-
-.hero-small{
-    color:#ffc83d;
-    font-size:13px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-.hero h1{
-    font-size:clamp(30px,7vw,55px);
-    margin:12px 0;
-}
-
-.hero p{
-    color:#aaa;
-    margin-bottom:20px;
-}
-
-/* ================= BUTTON ================= */
-
-.btn{
-    border:0;
-    border-radius:12px;
-    padding:13px 18px;
-    background:linear-gradient(135deg,#ff3636,#a50000);
-    color:#fff;
-    font-weight:bold;
-}
-
-.btn:hover{
-    opacity:.9;
-}
-
-.btn-dark{
-    background:#181818;
-    border:1px solid #333;
-}
-
-.btn-gold{
-    background:linear-gradient(135deg,#ffe16a,#a96c00);
-    color:#111;
-}
-
-.full-btn{
-    width:100%;
-}
-
-/* ================= GRID ================= */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-@media(min-width:700px){
-    .grid{
-        grid-template-columns:repeat(4,1fr);
-    }
-}
-
-/* ================= CARD ================= */
-
-.card{
-    background:linear-gradient(180deg,#171717,#101010);
-    border:1px solid #292929;
-    border-radius:17px;
-    padding:16px;
-}
-
-.card:hover{
-    border-color:#6b2424;
-}
-
-.card h3{
-    margin:8px 0;
-}
-
-.muted{
-    color:#999;
-}
-
-.price{
-    color:#ffc83d;
-    font-size:21px;
-    font-weight:900;
-}
-
-.badge{
-    display:inline-block;
-    background:#252525;
-    color:#ddd;
-    border-radius:20px;
-    padding:5px 9px;
-    font-size:11px;
-}
-
-/* ================= SECTION ================= */
-
-.section{
-    margin:25px 0;
-}
-
-.section-title{
-    font-size:21px;
-    margin-bottom:13px;
-}
-
-/* ================= ACTION CARDS ================= */
-
-.action-card{
-    cursor:pointer;
-    min-height:120px;
-}
-
-.action-icon{
-    font-size:27px;
-}
-
-/* ================= PRODUCTS ================= */
-
-.product-card{
-    display:flex;
-    flex-direction:column;
-}
-
-.product-card .buy{
-    margin-top:auto;
-}
-
-/* ================= TABS ================= */
-
-.tabs{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    padding-bottom:5px;
-    margin-bottom:15px;
-}
-
-.tabs button{
-    white-space:nowrap;
-    background:#151515;
-    color:#aaa;
-    border:1px solid #303030;
-    padding:10px 14px;
-    border-radius:11px;
-}
-
-.tabs button.active{
-    background:#8f1515;
-    color:white;
-}
-
-/* ================= FORM ================= */
-
-.form-card{
-    background:#131313;
-    border:1px solid #292929;
-    border-radius:18px;
-    padding:18px;
-}
-
-label{
-    display:block;
-    color:#ccc;
-    font-size:13px;
-    margin:13px 0 6px;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    background:#090909;
-    color:#fff;
-    border:1px solid #333;
-    border-radius:11px;
-    padding:13px;
-    outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:#d42626;
-}
-
-.form-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-@media(max-width:550px){
-    .form-row{
-        grid-template-columns:1fr;
-    }
-}
-
-/* ================= NOTICE ================= */
-
-.notice{
-    padding:13px;
-    border-radius:12px;
-    background:#191919;
-    border:1px solid #303030;
-    margin:10px 0;
-}
-
-.success{
-    border-color:#23613b;
-}
-
-.warning{
-    border-color:#695420;
-}
-
-.error{
-    border-color:#682727;
-}
-
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav{
-    position:fixed;
-    left:50%;
-    bottom:0;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:1150px;
-    height:73px;
-    background:#0b0b0bf7;
-    border-top:1px solid #292929;
-    z-index:1000;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    padding:5px;
-}
-
-.nav-btn{
-    border:0;
-    background:transparent;
-    color:#777;
-    font-size:11px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-}
-
-.nav-btn span{
-    font-size:22px;
-}
-
-.nav-btn.active{
-    color:white;
-}
-
-/* ================= FOOTER ================= */
-
-.footer{
-    text-align:center;
-    color:#666;
-    padding:25px 15px;
-    font-size:12px;
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#000c;
-    z-index:2000;
-    align-items:flex-end;
-    justify-content:center;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:700px;
-    max-height:90vh;
-    overflow:auto;
-    background:#111;
-    border:1px solid #333;
-    border-radius:25px 25px 0 0;
-    padding:20px;
-}
-
-@media(min-width:700px){
-    .modal{
-        align-items:center;
-    }
-
-    .modal-box{
-        border-radius:22px;
-    }
-}
-
-.close{
-    float:right;
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    background:#222;
-    color:#fff;
-    border:1px solid #444;
-    font-size:20px;
-}
-
-/* ================= TABLE ================= */
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th,
-td{
-    padding:10px;
-    text-align:left;
-    border-bottom:1px solid #292929;
-    font-size:13px;
-}
-
-/* ================= MENU ================= */
-
-.side-menu{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:#000b;
-    z-index:1500;
-}
-
-.side-menu.show{
-    display:block;
-}
-
-.menu-box{
-    width:min(330px,90%);
-    height:100%;
-    background:#101010;
-    border-right:1px solid #333;
-    padding:20px;
-    overflow:auto;
-}
-
-.menu-item{
-    width:100%;
-    border:0;
-    background:#171717;
-    color:#fff;
-    padding:14px;
-    margin:5px 0;
-    border-radius:12px;
-    text-align:left;
-}
-
-/* ================= DESKTOP ================= */
-
-@media(min-width:900px){
-
-    .hero{
-        padding:50px;
-    }
-
-    .header{
-        padding-left:25px;
-        padding-right:25px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG D-M TOP UP</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================================================
-                         HEADER
-========================================================= -->
+<!-- =====================================================
+     APP
+===================================================== -->
 
-<header class="header">
+<div id="app">
 
-<button class="menu-btn" onclick="openMenu()">☰</button>
+    <!-- TOP BAR -->
+    <header class="topbar">
 
-<div class="logo">
-AG <span>D-M TOP UP</span>
-</div>
-
-<div class="header-space"></div>
-
-<button class="icon-btn" onclick="openPage('notifications')">
-🔔
-</button>
-
-<button class="icon-btn" onclick="openPage('account')">
-👤
-</button>
-
-</header>
-
-
-<!-- =========================================================
-                         MAIN
-========================================================= -->
-
-<main class="container">
-
-
-<!-- ========================= HOME ========================= -->
-
-<section id="home" class="page active">
-
-<div class="hero">
-
-<div class="hero-small">
-ONLY FREE FIRE TOP UP + TOURNAMENT
-</div>
-
-<h1>🔥 AG D-M TOP UP</h1>
-
-<p>
-Fast • Secure • Easy
-</p>
-
-<button class="btn" onclick="openPage('topup')">
-💎 TOP UP NOW
-</button>
-
-<button class="btn btn-dark" onclick="openPage('tournament')">
-🏆 JOIN TOURNAMENT
-</button>
-
-</div>
-
-
-<!-- QUICK ACTION -->
-
-<div class="section">
-
-<h2 class="section-title">
-⚡ Quick Actions
-</h2>
-
-<div class="grid">
-
-<div class="card action-card" onclick="openPage('topup')">
-<div class="action-icon">💎</div>
-<h3>FF TOP UP</h3>
-<div class="muted">UID Recharge</div>
-</div>
-
-<div class="card action-card" onclick="openPage('tournament')">
-<div class="action-icon">🏆</div>
-<h3>TOURNAMENT</h3>
-<div class="muted">Join Match</div>
-</div>
-
-<div class="card action-card" onclick="openPage('orders')">
-<div class="action-icon">📦</div>
-<h3>MY ORDERS</h3>
-<div class="muted">Track Orders</div>
-</div>
-
-<div class="card action-card" onclick="openPage('wallet')">
-<div class="action-icon">💵</div>
-<h3>ADD MONEY</h3>
-<div class="muted">Wallet</div>
-</div>
-
-</div>
-</div>
-
-
-<!-- SPECIAL OFFER -->
-
-<div class="section">
-
-<h2 class="section-title">
-🔥 SPECIAL OFFER
-</h2>
-
-<div class="card">
-
-<span class="badge">
-LIMITED OFFER
-</span>
-
-<h3>240 Diamond</h3>
-
-<div class="price">
-BDT 158
-</div>
-
-<br>
-
-<button class="btn full-btn"
-onclick="selectProduct('240 Diamond',158)">
-BUY NOW
-</button>
-
-</div>
-
-</div>
-
-
-<!-- POPULAR -->
-
-<div class="section">
-
-<h2 class="section-title">
-💎 POPULAR TOP UP
-</h2>
-
-<div class="grid" id="popularProducts">
-</div>
-
-</div>
-
-
-<!-- MEMBERSHIP -->
-
-<div class="section">
-
-<h2 class="section-title">
-🎁 WEEKLY / MONTHLY
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Weekly</h3>
-
-<div class="price">
-BDT 158
-</div>
-
-<button class="btn full-btn"
-onclick="selectProduct('Weekly',158)">
-BUY
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h3>Monthly</h3>
-
-<div class="price">
-BDT 790
-</div>
-
-<button class="btn full-btn"
-onclick="selectProduct('Monthly',790)">
-BUY
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TOURNAMENT -->
-
-<div class="section">
-
-<h2 class="section-title">
-🏆 UPCOMING TOURNAMENT
-</h2>
-
-<div class="card">
-
-<span class="badge">
-🟢 UPCOMING
-</span>
-
-<h2>
-AG D-M WEEKLY CUP
-</h2>
-
-<p class="muted">
-Mode: Squad • Map: Bermuda
-</p>
-
-<p>
-Entry Fee:
-<b>৳50</b>
-</p>
-
-<p>
-Prize Pool:
-<b>৳5,000</b>
-</p>
-
-<p>
-Slots:
-<b>32/48</b>
-</p>
-
-<button class="btn full-btn"
-onclick="joinTournament()">
-JOIN NOW
-</button>
-
-</div>
-
-</div>
-
-
-<!-- HOW TO -->
-
-<div class="section">
-
-<h2 class="section-title">
-📖 HOW TO TOP UP
-</h2>
-
-<div class="card">
-
-1️⃣ UID দিন<br><br>
-
-2️⃣ Package নির্বাচন করুন<br><br>
-
-3️⃣ Payment করুন<br><br>
-
-4️⃣ Order Complete
-
-</div>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================================================
-                       FF TOP UP
-========================================================= -->
-
-<section id="topup" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-🔥 FF TOP UP (UID)
-</h2>
-
-<div class="form-card">
-
-<label>
-Player UID
-</label>
-
-<input
-id="playerUID"
-placeholder="Enter Free Fire UID"
->
-
-
-<button
-class="btn btn-dark"
-style="margin-top:10px"
-onclick="uidGuide()">
-
-❓ Where can I find UID?
-
-</button>
-
-
-<label>
-Region
-</label>
-
-<select id="region">
-
-<option>
-🇧🇩 Bangladesh
-</option>
-
-<option>
-🌍 Indonesia
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<!-- CATEGORY -->
-
-<div class="tabs" id="categoryTabs">
-</div>
-
-
-<!-- PRODUCTS -->
-
-<div class="grid" id="productList">
-</div>
-
-</section>
-
-
-<!-- =========================================================
-                       CHECKOUT
-========================================================= -->
-
-<section id="checkout" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-🧾 CHECKOUT
-</h2>
-
-<div class="form-card"
-id="checkoutSummary">
-
-</div>
-
-</div>
-
-
-<div class="form-card">
-
-<h3>
-Customer Information
-</h3>
-
-
-<div class="form-row">
-
-<div>
-
-<label>
-Name
-</label>
-
-<input id="customerName">
-
-</div>
-
-
-<div>
-
-<label>
-Phone
-</label>
-
-<input
-id="customerPhone"
-placeholder="01XXXXXXXXX">
-
-</div>
-
-</div>
-
-
-<label>
-Email
-</label>
-
-<input id="customerEmail">
-
-
-<!-- COUPON -->
-
-<label>
-🎁 Coupon
-</label>
-
-<div style="display:flex;gap:8px">
-
-<input
-id="couponCode"
-placeholder="Enter Code">
-
-<button
-class="btn btn-dark"
-onclick="applyCoupon()">
-
-APPLY
-
-</button>
-
-</div>
-
-<div id="couponResult">
-</div>
-
-
-<!-- PAYMENT -->
-
-<h3 style="margin-top:25px">
-💳 SELECT PAYMENT
-</h3>
-
-
-<div class="grid">
-
-<button
-class="btn btn-dark"
-onclick="choosePayment('bKash')">
-
-🟣 bKash
-
-</button>
-
-
-<button
-class="btn btn-dark"
-onclick="choosePayment('Nagad')">
-
-🟠 Nagad
-
-</button>
-
-
-<button
-class="btn btn-dark"
-onclick="choosePayment('Rocket')">
-
-🔵 Rocket
-
-</button>
-
-
-<button
-class="btn btn-dark"
-onclick="choosePayment('Wallet')">
-
-💰 Wallet
-
-</button>
-
-</div>
-
-
-<div
-id="paymentInfo"
-class="notice">
-
-Payment method নির্বাচন করুন।
-
-</div>
-
-
-<label>
-Transaction ID
-</label>
-
-<input
-id="transactionID"
-placeholder="Enter Transaction ID">
-
-
-<button
-class="btn full-btn"
-style="margin-top:15px"
-onclick="submitOrder()">
-
-SUBMIT PAYMENT
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-                       ORDERS
-========================================================= -->
-
-<section id="orders" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-📦 MY ORDERS
-</h2>
-
-
-<div class="tabs">
-
-<button class="active">
-All
-</button>
-
-<button>
-Pending
-</button>
-
-<button>
-Processing
-</button>
-
-<button>
-Completed
-</button>
-
-<button>
-Failed
-</button>
-
-<button>
-Cancelled
-</button>
-
-<button>
-Refunded
-</button>
-
-</div>
-
-
-<div id="orderList">
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-                    TOURNAMENT
-========================================================= -->
-
-<section id="tournament" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-🏆 FREE FIRE TOURNAMENT
-</h2>
-
-
-<div class="tabs">
-
-<button class="active">
-🟢 UPCOMING
-</button>
-
-<button>
-🔴 LIVE
-</button>
-
-<button>
-⚫ COMPLETED
-</button>
-
-</div>
-
-
-<div class="card">
-
-<span class="badge">
-🟢 UPCOMING
-</span>
-
-<h2>
-AG D-M WEEKLY CUP
-</h2>
-
-<p>
-📅 Date:
-30 Sep 2026
-</p>
-
-<p>
-⏰ Time:
-9:00 PM
-</p>
-
-<p>
-🎮 Mode:
-Squad
-</p>
-
-<p>
-🗺 Map:
-Bermuda
-</p>
-
-<p>
-💵 Entry:
-৳50
-</p>
-
-<p>
-🏆 Prize:
-৳5,000
-</p>
-
-<p>
-👥 Slots:
-32/48
-</p>
-
-<button
-class="btn full-btn"
-onclick="joinTournament()">
-
-JOIN NOW
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- RULES -->
-
-<div class="section">
-
-<h2 class="section-title">
-📜 TOURNAMENT RULES
-</h2>
-
-<div class="card">
-
-❌ No Hack<br><br>
-
-❌ No Cheat<br><br>
-
-✅ Correct UID<br><br>
-
-✅ Correct Team Information<br><br>
-
-✅ Match Time Follow<br><br>
-
-✅ Room Rules Follow<br><br>
-
-✅ Entry Rules<br><br>
-
-✅ Cancellation Rules<br><br>
-
-✅ Refund Rules<br><br>
-
-✅ Dispute Rules
-
-</div>
-
-</div>
-
-
-<!-- LEADERBOARD -->
-
-<div class="section">
-
-<h2 class="section-title">
-📊 LEADERBOARD
-</h2>
-
-<div class="card">
-
-<table>
-
-<tr>
-<th>#</th>
-<th>Team</th>
-<th>Kills</th>
-<th>Points</th>
-</tr>
-
-<tr>
-<td>1</td>
-<td>Team Alpha</td>
-<td>12</td>
-<td>28</td>
-</tr>
-
-<tr>
-<td>2</td>
-<td>Team Bravo</td>
-<td>9</td>
-<td>24</td>
-</tr>
-
-<tr>
-<td>3</td>
-<td>Team X</td>
-<td>8</td>
-<td>20</td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-                         WALLET
-========================================================= -->
-
-<section id="wallet" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-💰 MY WALLET
-</h2>
-
-
-<div class="hero">
-
-<div class="muted">
-Available Balance
-</div>
-
-<h1>
-৳250
-</h1>
-
-</div>
-
-
-<div class="form-card">
-
-<label>
-Amount
-</label>
-
-<input
-id="walletAmount"
-type="number"
-placeholder="BDT">
-
-
-<label>
-Payment Method
-</label>
-
-<select>
-
-<option>
-bKash
-</option>
-
-<option>
-Nagad
-</option>
-
-<option>
-Rocket
-</option>
-
-</select>
-
-
-<label>
-Transaction ID
-</label>
-
-<input
-id="walletTransaction"
-placeholder="Transaction ID">
-
-
-<button
-class="btn full-btn"
-onclick="addMoney()">
-
-SUBMIT DEPOSIT
-
-</button>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-<h2 class="section-title">
-📜 WALLET TRANSACTIONS
-</h2>
-
-<div class="card">
-
-<div class="success">
-+ ৳500 — Wallet Deposit
-</div>
-
-<br>
-
-<div>
-- ৳158 — FF Top Up
-</div>
-
-<br>
-
-<div>
-- ৳50 — Tournament Entry
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-                        ACCOUNT
-========================================================= -->
-
-<section id="account" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-👤 ACCOUNT
-</h2>
-
-
-<div class="card">
-
-<h2>
-AG D-M User
-</h2>
-
-<p class="muted">
-Username: demo_user
-</p>
-
-<br>
-
-<span class="badge">
-FREE USER
-</span>
-
-</div>
-
-</div>
-
-
-<div class="grid">
-
-<div class="card"
-onclick="openPage('orders')">
-
-📦
-
-<h3>
-My Orders
-</h3>
-
-</div>
-
-
-<div class="card"
-onclick="openPage('tournament')">
-
-🏆
-
-<h3>
-My Tournaments
-</h3>
-
-</div>
-
-
-<div class="card"
-onclick="openPage('wallet')">
-
-💰
-
-<h3>
-Wallet
-</h3>
-
-</div>
-
-
-<div class="card"
-onclick="openPage('notifications')">
-
-🔔
-
-<h3>
-Notifications
-</h3>
-
-</div>
-
-
-<div class="card">
-
-🔐
-
-<h3>
-Security
-</h3>
-
-</div>
-
-
-<div class="card">
-
-🏅
-
-<h3>
-Rank
-</h3>
-
-<p class="muted">
-Bronze → Silver → Gold → Platinum → Diamond → Master
-</p>
-
-</div>
-
-
-<div class="card">
-
-👑
-
-<h3>
-Premium
-</h3>
-
-</div>
-
-
-<div class="card"
-onclick="support()">
-
-🎧
-
-<h3>
-Support
-</h3>
-
-</div>
-
-</div>
-
-
-<br>
-
-<button
-class="btn btn-dark full-btn"
-onclick="alert('Demo logout')">
-
-🚪 LOGOUT
-
-</button>
-
-</section>
-
-
-<!-- =========================================================
-                     NOTIFICATIONS
-========================================================= -->
-
-<section id="notifications" class="page">
-
-<div class="section">
-
-<h2 class="section-title">
-🔔 NOTIFICATIONS
-</h2>
-
-
-<div class="notice success">
-✓ Order Completed
-</div>
-
-
-<div class="notice">
-🏆 Tournament Confirmed
-</div>
-
-
-<div class="notice">
-💰 Wallet Approved
-</div>
-
-
-<div class="notice">
-🔥 New Offer
-</div>
-
-
-<div class="notice warning">
-⚠️ Payment Pending
-</div>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-<!-- =========================================================
-                         FOOTER
-========================================================= -->
-
-<footer class="footer">
-
-🔥 AG D-M TOP UP
-
-<br><br>
-
-ONLY FREE FIRE TOP UP + TOURNAMENT
-
-<br><br>
-
-Terms & Conditions • Privacy Policy • Refund Policy • Tournament Rules
-
-</footer>
-
-
-<!-- =========================================================
-                    BOTTOM NAVIGATION
-========================================================= -->
-
-<nav class="bottom-nav">
-
-<button
-class="nav-btn active"
-data-page="home"
-onclick="openPage('home')">
-
-<span>🏠</span>
-Home
-
-</button>
-
-
-<button
-class="nav-btn"
-data-page="tournament"
-onclick="openPage('tournament')">
-
-<span>🏆</span>
-Tournament
-
-</button>
-
-
-<button
-class="nav-btn"
-data-page="wallet"
-onclick="openPage('wallet')">
-
-<span>💵</span>
-Add Money
-
-</button>
-
-
-<button
-class="nav-btn"
-data-page="orders"
-onclick="openPage('orders')">
-
-<span>🗂️</span>
-Orders
-
-</button>
-
-
-<button
-class="nav-btn"
-data-page="account"
-onclick="openPage('account')">
-
-<span>👤</span>
-Account
-
-</button>
-
-</nav>
-
-
-<!-- =========================================================
-                         MODAL
-========================================================= -->
-
-<div
-class="modal"
-id="modal"
-onclick="closeOutside(event)">
-
-<div class="modal-box">
-
-<button
-class="close"
-onclick="closeModal()">
-
-×
-
-</button>
-
-<div id="modalContent">
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-                      SIDE MENU
-========================================================= -->
-
-<div
-class="side-menu"
-id="sideMenu"
-onclick="closeMenuOutside(event)">
-
-<div class="menu-box">
-
-<h2>
-🔥 AG D-M TOP UP
-</h2>
-
-<br>
-
-
-<button
-class="menu-item"
-onclick="menuGo('home')">
-
-🏠 Home
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('topup')">
-
-💎 FF Top Up
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('tournament')">
-
-🏆 Tournament
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('orders')">
-
-📦 Orders
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('wallet')">
-
-💰 Wallet
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('account')">
-
-👤 Account
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="menuGo('notifications')">
-
-🔔 Notifications
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="support()">
-
-🎧 Support
-
-</button>
-
-
-<button
-class="menu-item"
-onclick="alert('Terms & Conditions')">
-
-📄 Legal
-
-</button>
-
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-                       JAVASCRIPT
-========================================================= -->
-
-<script>
-
-/* ================= DATA ================= */
-
-const products = {
-
-"Diamonds":[
-
-["25 Diamond",22],
-["50 Diamond",35],
-["115 Diamond",79],
-["240 Diamond",158],
-["355 Diamond",235],
-["480 Diamond",332],
-["505 Diamond",340],
-["610 Diamond",400],
-["850 Diamond",560],
-["1090 Diamond",720],
-["1240 Diamond",800],
-["1720 Diamond",1120],
-["2530 Diamond",1610],
-["4010 Diamond",2686],
-["5060 Diamond",3360],
-["7590 Diamond",5040],
-["10120 Diamond",6720]
-
-],
-
-"Weekly":[
-
-["Weekly",158],
-["2× Weekly",315],
-["3× Weekly",475],
-["4× Weekly",632],
-["5× Weekly",790],
-["Weekly Lite",0]
-
-],
-
-"Monthly":[
-
-["Monthly",790],
-["2× Monthly",1580],
-["3× Monthly",2370],
-["4× Monthly",3160],
-["5× Monthly",3950]
-
-],
-
-"FF ID Like":[
+        <div class="brand">
+            <div class="brand-logo">AG</div>
 
-["Daily Like",0],
-["Special Like",0],
-["Like Package",0]
+            <div>
+                <h1>AG D-M</h1>
+                <span>TOP UP</span>
+            </div>
+        </div>
 
-],
+        <button class="icon-btn" onclick="openProfile()">
+            👤
+        </button>
 
-"Indonesia":[
+    </header>
 
-["Indo Diamond",0],
-["Indo Weekly",0],
-["Indo Monthly",0],
-["Booyah Pass Indo",0],
-["Level Up Pass Indo",0]
 
-],
+    <!-- =================================================
+         AUTH
+    ================================================== -->
 
-"Booyah Pass":[
+    <main id="authScreen" class="auth-screen">
 
-["Booyah Pass",0]
+        <!-- LOGIN -->
+        <section id="loginPage" class="auth-card">
 
-],
+            <div class="auth-logo">AG</div>
 
-"Level Up Pass":[
+            <h2>Welcome Back</h2>
+            <p class="muted">
+                Login to your AG D-M account
+            </p>
 
-["Level Up Pass Lv.6",0],
-["Level Up Pass Lv.10",0],
-["New Level Up Pass",0]
+            <form id="loginForm">
 
-],
+                <label>
+                    Username / Email
+                </label>
 
-"Special Offers":[
+                <input
+                    id="loginValue"
+                    type="text"
+                    placeholder="Username or email"
+                    autocomplete="username"
+                    required
+                >
 
-["Limited Offer",0],
-["Discount Offer",0],
-["Weekly/Monthly Offer",0],
-["Premium Offer",0]
+                <label>
+                    Password
+                </label>
 
-]
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Your password"
+                    autocomplete="current-password"
+                    required
+                >
 
-};
+                <button class="primary-btn" type="submit">
+                    LOGIN
+                </button>
 
+            </form>
 
-let currentCategory = "Diamonds";
+            <button class="text-btn" onclick="showForgot()">
+                Forgot Password?
+            </button>
 
-let selectedProduct = null;
+            <div class="auth-switch">
+                Don't have an account?
+                <button onclick="showRegister()">Register</button>
+            </div>
 
-let selectedPayment = "";
+        </section>
 
-let discount = 0;
 
+        <!-- REGISTER -->
+        <section id="registerPage" class="auth-card hidden">
 
-/* ================= PAGE ================= */
+            <div class="auth-logo">AG</div>
 
-function openPage(page){
+            <h2>Create Account</h2>
+            <p class="muted">
+                Join AG D-M TOP UP
+            </p>
 
-document.querySelectorAll(".page")
-.forEach(function(p){
+            <form id="registerForm">
 
-p.classList.remove("active");
+                <label>Name</label>
 
-});
+                <input
+                    id="regName"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                >
 
+                <label>Username</label>
 
-const target =
-document.getElementById(page);
+                <input
+                    id="regUsername"
+                    type="text"
+                    placeholder="Choose username"
+                    required
+                >
 
-if(target){
+                <label>Email</label>
 
-target.classList.add("active");
+                <input
+                    id="regEmail"
+                    type="email"
+                    placeholder="example@email.com"
+                    required
+                >
 
-}
+                <label>Password</label>
 
+                <input
+                    id="regPassword"
+                    type="password"
+                    placeholder="Minimum 6 characters"
+                    required
+                >
 
-document.querySelectorAll(".nav-btn")
-.forEach(function(btn){
+                <label>Confirm Password</label>
 
-btn.classList.toggle(
-"active",
-btn.dataset.page === page
-);
+                <input
+                    id="regConfirmPassword"
+                    type="password"
+                    placeholder="Confirm password"
+                    required
+                >
 
-});
+                <button class="primary-btn" type="submit">
+                    CREATE ACCOUNT
+                </button>
 
+            </form>
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+            <div class="auth-switch">
+                Already have an account?
+                <button onclick="showLogin()">Login</button>
+            </div>
 
+        </section>
 
-if(page === "orders"){
 
-renderOrders();
+        <!-- FORGOT PASSWORD -->
+        <section id="forgotPage" class="auth-card hidden">
 
-}
+            <div class="auth-logo">AG</div>
 
-}
+            <h2>Forgot Password</h2>
 
+            <p class="muted">
+                Enter your registered email.
+            </p>
 
-/* ================= CATEGORY ================= */
+            <form id="forgotForm">
 
-function renderCategories(){
+                <label>Email</label>
 
-const box =
-document.getElementById("categoryTabs");
+                <input
+                    id="forgotEmail"
+                    type="email"
+                    placeholder="Your registered email"
+                    required
+                >
 
-box.innerHTML = "";
+                <button class="primary-btn" type="submit">
+                    SEND RESET REQUEST
+                </button>
 
+            </form>
 
-Object.keys(products).forEach(function(category){
+            <button class="text-btn" onclick="showLogin()">
+                ← Back to Login
+            </button>
 
-const button =
-document.createElement("button");
+        </section>
 
-button.textContent = category;
+    </main>
 
-if(category === currentCategory){
 
-button.classList.add("active");
+    <!-- =================================================
+         MAIN APP
+    ================================================== -->
 
-}
+    <main id="mainApp" class="main-app hidden">
 
 
-button.onclick = function(){
+        <!-- HOME -->
+        <section id="homePage" class="page active">
 
-currentCategory = category;
+            <div class="welcome">
+                <div>
+                    <span class="small-label">WELCOME BACK</span>
+                    <h2 id="welcomeName">User</h2>
+                </div>
 
-renderCategories();
+                <div class="live-dot">
+                    ● LIVE
+                </div>
+            </div>
 
-renderProducts();
 
-};
+            <!-- BALANCE -->
+            <div class="balance-card">
 
+                <div class="balance-top">
+                    <span>Available Balance</span>
+                    <span>BDT</span>
+                </div>
 
-box.appendChild(button);
+                <div class="balance-value">
+                    ৳<span id="homeBalance">0.00</span>
+                </div>
 
-});
+                <div class="balance-actions">
 
-}
+                    <button onclick="showPage('addMoneyPage')">
+                        + Add Money
+                    </button>
 
+                    <button onclick="showPage('ordersPage')">
+                        My Orders
+                    </button>
 
-/* ================= PRODUCTS ================= */
+                </div>
 
-function renderProducts(){
+            </div>
 
-const box =
-document.getElementById("productList");
 
-box.innerHTML = "";
+            <!-- QUICK ACTIONS -->
+            <h3 class="section-title">
+                Quick Access
+            </h3>
 
+            <div class="quick-grid">
 
-products[currentCategory]
-.forEach(function(product){
+                <button onclick="showPage('topupPage')">
+                    <span>💎</span>
+                    <b>Diamond Top Up</b>
+                    <small>Instant order</small>
+                </button>
 
-const name = product[0];
+                <button onclick="showPage('addMoneyPage')">
+                    <span>💰</span>
+                    <b>Add Money</b>
+                    <small>Deposit balance</small>
+                </button>
 
-const price = product[1];
+                <button onclick="showPage('tournamentPage')">
+                    <span>🏆</span>
+                    <b>Tournament</b>
+                    <small>Join & play</small>
+                </button>
 
+                <button onclick="showPage('profilePage')">
+                    <span>👤</span>
+                    <b>Profile</b>
+                    <small>My account</small>
+                </button>
 
-const card =
-document.createElement("div");
+            </div>
 
-card.className =
-"card product-card";
 
+            <!-- TOP UP -->
+            <div class="promo-card">
 
-card.innerHTML = `
+                <div>
+                    <span class="small-label">FREE FIRE</span>
 
-<span class="badge">
-${currentCategory}
-</span>
+                    <h3>
+                        Diamond Top Up
+                    </h3>
 
-<h3>
-${name}
-</h3>
+                    <p>
+                        Fast and easy recharge.
+                    </p>
 
-<div class="price">
-${price > 0 ? "BDT " + price : "Admin-set"}
-</div>
-
-<br>
-
-<button class="btn full-btn">
-SELECT
-</button>
-
-`;
-
-
-card.querySelector("button")
-.onclick = function(){
-
-selectProduct(name,price);
-
-};
-
-
-box.appendChild(card);
-
-});
-
-}
-
-
-/* ================= POPULAR ================= */
-
-function renderPopular(){
-
-const box =
-document.getElementById("popularProducts");
-
-const list = [
-
-["25 Diamond",22],
-["240 Diamond",158],
-["610 Diamond",400],
-["1240 Diamond",800]
-
-];
-
-
-list.forEach(function(product){
-
-const card =
-document.createElement("div");
-
-card.className="card";
-
-card.innerHTML=`
-
-<h3>
-${product[0]}
-</h3>
-
-<div class="price">
-BDT ${product[1]}
-</div>
-
-<br>
-
-<button class="btn full-btn">
-BUY NOW
-</button>
-
-`;
-
-card.querySelector("button")
-.onclick=function(){
-
-selectProduct(
-product[0],
-product[1]
-);
-
-};
-
-
-box.appendChild(card);
-
-});
-
-}
-
-
-/* ================= SELECT PRODUCT ================= */
-
-function selectProduct(name,price){
-
-const uid =
-document.getElementById("playerUID").value;
-
-
-if(!uid){
-
-openPage("topup");
-
-showModal(`
-
-<h2>
-⚠️ Player UID Required
-</h2>
-
-<p class="muted">
-প্রথমে আপনার Free Fire UID দিন।
-</p>
-
-<br>
-
-<button
-class="btn full-btn"
-onclick="closeModal()">
-
-OK
-
-</button>
-
-`);
-
-return;
-
-}
-
-
-selectedProduct = {
-
-name:name,
-price:price,
-uid:uid
-
-};
-
-
-discount = 0;
-
-
-document.getElementById(
-"checkoutSummary"
-).innerHTML = `
-
-<span class="badge">
-✓ SELECTED
-</span>
-
-<h2>
-${name}
-</h2>
-
-<p>
-Game:
-<b>Free Fire</b>
-</p>
-
-<p>
-UID:
-<b>${uid}</b>
-</p>
-
-<div class="price">
-${price > 0 ? "BDT " + price : "Admin-set"}
-</div>
-
-`;
-
-
-openPage("checkout");
-
-}
-
-
-/* ================= UID GUIDE ================= */
-
-function uidGuide(){
-
-showModal(`
-
-<h2>
-🧭 HOW TO FIND UID
-</h2>
-
-<br>
-
-<p>
-1️⃣ Free Fire Open করুন
-</p>
-
-<br>
-
-<p>
-2️⃣ Profile খুলুন
-</p>
-
-<br>
-
-<p>
-3️⃣ UID দেখুন
-</p>
-
-<br>
-
-<p>
-4️⃣ UID Copy করুন
-</p>
-
-<br>
-
-<p>
-5️⃣ এখানে Paste করুন
-</p>
-
-`);
-
-}
-
-
-/* ================= PAYMENT ================= */
-
-function choosePayment(method){
-
-selectedPayment = method;
-
-
-document.getElementById(
-"paymentInfo"
-).innerHTML = `
-
-<div class="notice success">
-
-Payment Method:
-<b>${method}</b>
-
-<br><br>
-
-Demo Payment Number:
-<b>01XXXXXXXXX</b>
-
-</div>
-
-`;
-
-}
-
-
-/* ================= COUPON ================= */
-
-function applyCoupon(){
-
-const code =
-document.getElementById(
-"couponCode"
-).value
-.trim()
-.toUpperCase();
-
-
-const result =
-document.getElementById(
-"couponResult"
-);
-
-
-if(code === "AG10"){
-
-discount = 10;
-
-
-result.innerHTML = `
-
-<div class="notice success">
-
-✓ 10% Demo Discount Applied
-
-</div>
-
-`;
-
-}else{
-
-discount = 0;
-
-
-result.innerHTML = `
-
-<div class="notice error">
-
-❌ Invalid Coupon
-
-</div>
-
-`;
+                    <button
+                        class="primary-btn small-btn"
+                        onclick="showPage('topupPage')"
+                    >
+                        TOP UP NOW
+                    </button>
+                </div>
 
-}
+                <div class="promo-icon">
+                    💎
+                </div>
 
-}
+            </div>
 
+        </section>
 
-/* ================= ORDER ================= */
 
-function submitOrder(){
+        <!-- TOP UP -->
+        <section id="topupPage" class="page">
 
-if(!selectedProduct){
+            <div class="page-header">
+                <button onclick="showPage('homePage')">
+                    ←
+                </button>
 
-alert(
-"প্রথমে Product নির্বাচন করুন।"
-);
+                <div>
+                    <h2>Diamond Top Up</h2>
+                    <span>Free Fire</span>
+                </div>
+            </div>
 
-return;
 
-}
+            <form id="orderForm" class="form-card">
 
+                <label>Player UID</label>
 
-const transaction =
-document.getElementById(
-"transactionID"
-).value.trim();
+                <input
+                    id="orderUid"
+                    type="text"
+                    inputmode="numeric"
+                    placeholder="Enter Free Fire UID"
+                    required
+                >
 
 
-if(!transaction){
+                <label>Server</label>
 
-alert(
-"Transaction ID দিন।"
-);
+                <select id="orderServer">
 
-return;
+                    <option value="BD">Bangladesh</option>
+                    <option value="IND">India</option>
+                    <option value="BR">Brazil</option>
+                    <option value="US">USA</option>
+                    <option value="SAC">SAC</option>
+                    <option value="NA">North America</option>
+                    <option value="TH">Thailand</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="SG">Singapore</option>
+                    <option value="PK">Pakistan</option>
 
-}
+                </select>
 
 
-if(!selectedPayment){
+                <label>Diamond Package</label>
 
-alert(
-"Payment Method নির্বাচন করুন।"
-);
+                <div class="package-grid">
 
-return;
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="25"
+                            data-price="20"
+                            checked
+                        >
 
-}
+                        <span>
+                            💎 25
+                        </span>
 
+                        <b>৳20</b>
+                    </label>
 
-const finalPrice =
-Math.max(
-0,
-selectedProduct.price -
-(selectedProduct.price * discount / 100)
-);
 
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="50"
+                            data-price="35"
+                        >
 
-const order = {
+                        <span>
+                            💎 50
+                        </span>
 
-id:
-"AGDM-" +
-Date.now()
-.toString()
-.slice(-7),
+                        <b>৳35</b>
+                    </label>
 
-product:
-selectedProduct.name,
 
-price:
-finalPrice,
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="100"
+                            data-price="65"
+                        >
 
-uid:
-selectedProduct.uid,
+                        <span>
+                            💎 100
+                        </span>
 
-payment:
-selectedPayment,
+                        <b>৳65</b>
+                    </label>
 
-transaction:
-transaction,
 
-status:
-"Processing",
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="310"
+                            data-price="190"
+                        >
 
-date:
-new Date()
-.toLocaleString()
+                        <span>
+                            💎 310
+                        </span>
 
-};
+                        <b>৳190</b>
+                    </label>
 
 
-let orders =
-JSON.parse(
-localStorage.getItem(
-"AGDM_ORDERS"
-) || "[]"
-);
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="520"
+                            data-price="320"
+                        >
 
+                        <span>
+                            💎 520
+                        </span>
 
-orders.unshift(order);
+                        <b>৳320</b>
+                    </label>
 
 
-localStorage.setItem(
-"AGDM_ORDERS",
-JSON.stringify(orders)
-);
+                    <label class="package">
+                        <input
+                            type="radio"
+                            name="package"
+                            value="1060"
+                            data-price="640"
+                        >
 
+                        <span>
+                            💎 1060
+                        </span>
 
-showModal(`
+                        <b>৳640</b>
+                    </label>
 
-<h2>
-🎉 ORDER SUCCESS
-</h2>
+                </div>
 
-<br>
 
-<div class="notice success">
+                <div class="order-total">
 
-Order ID:
-<b>${order.id}</b>
+                    <span>Total</span>
 
-<br><br>
+                    <strong>
+                        ৳<span id="selectedPrice">20</span>
+                    </strong>
 
-Product:
-<b>${order.product}</b>
+                </div>
 
-<br><br>
 
-UID:
-<b>${order.uid}</b>
+                <button class="primary-btn" type="submit">
+                    PLACE ORDER
+                </button>
 
-<br><br>
+            </form>
 
-Amount:
-<b>BDT ${order.price}</b>
+        </section>
 
-<br><br>
 
-Status:
-🟡 Processing
+        <!-- ORDERS -->
+        <section id="ordersPage" class="page">
 
-</div>
-
-
-<button
-class="btn full-btn"
-onclick="
-closeModal();
-openPage('orders');
-">
-
-VIEW MY ORDER
-
-</button>
-
-`);
-
-}
-
-
-/* ================= ORDERS ================= */
-
-function renderOrders(){
-
-const box =
-document.getElementById(
-"orderList"
-);
-
-
-const orders =
-JSON.parse(
-localStorage.getItem(
-"AGDM_ORDERS"
-) || "[]"
-);
-
-
-if(!orders.length){
-
-box.innerHTML = `
-
-<div class="card">
-
-<h3>
-📦 No Orders Yet
-</h3>
-
-<p class="muted">
-আপনার এখনো কোনো Order নেই।
-</p>
-
-<br>
-
-<button
-class="btn"
-onclick="openPage('topup')">
-
-START TOP UP
-
-</button>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-box.innerHTML = "";
-
-
-orders.forEach(function(order){
+            <div class="page-header">
 
-const card =
-document.createElement("div");
+                <button onclick="showPage('homePage')">
+                    ←
+                </button>
 
-card.className="card";
+                <div>
+                    <h2>My Orders</h2>
+                    <span>Order history</span>
+                </div>
 
-card.style.marginBottom="12px";
+            </div>
 
+            <div id="ordersList">
 
-card.innerHTML = `
+                <div class="empty-state">
+                    <div>📦</div>
+                    <h3>No orders yet</h3>
+                    <p>Your orders will appear here.</p>
+                </div>
 
-<span class="badge">
-${order.status}
-</span>
+            </div>
 
-<h3>
-${order.product}
-</h3>
+        </section>
 
-<p>
-Order ID:
-${order.id}
-</p>
 
-<p>
-UID:
-${order.uid}
-</p>
+        <!-- ADD MONEY -->
+        <section id="addMoneyPage" class="page">
 
-<p>
-Payment:
-${order.payment}
-</p>
+            <div class="page-header">
 
-<div class="price">
-BDT ${order.price}
-</div>
-
-<br>
-
-<button class="btn btn-dark">
-ORDER DETAILS
-</button>
-
-`;
-
-
-card.querySelector("button")
-.onclick=function(){
-
-showOrder(order);
-
-};
-
-
-box.appendChild(card);
-
-});
-
-}
-
-
-/* ================= ORDER DETAILS ================= */
-
-function showOrder(order){
-
-showModal(`
+                <button onclick="showPage('homePage')">
+                    ←
+                </button>
 
-<h2>
-📦 ORDER DETAILS
-</h2>
+                <div>
+                    <h2>Add Money</h2>
+                    <span>Deposit to wallet</span>
+                </div>
 
-<br>
+            </div>
 
-<div class="card">
 
-Order ID:
-<b>${order.id}</b>
+            <div class="deposit-card">
 
-<br><br>
+                <div class="deposit-methods">
 
-Date:
-${order.date}
+                    <button
+                        class="method active"
+                        data-method="bKash"
+                        onclick="selectPaymentMethod(this)"
+                    >
+                        <b>বিকাশ</b>
+                        <small>bKash</small>
+                    </button>
 
-<br><br>
+                    <button
+                        class="method"
+                        data-method="Nagad"
+                        onclick="selectPaymentMethod(this)"
+                    >
+                        <b>নগদ</b>
+                        <small>Nagad</small>
+                    </button>
 
-Product:
-${order.product}
+                    <button
+                        class="method"
+                        data-method="AG Wallet"
+                        onclick="selectPaymentMethod(this)"
+                    >
+                        <b>AG</b>
+                        <small>AG Wallet</small>
+                    </button>
 
-<br><br>
+                </div>
 
-UID:
-${order.uid}
 
-<br><br>
+                <div class="payment-info">
 
-Payment:
-${order.payment}
+                    <span>Payment Number</span>
 
-<br><br>
+                    <div class="copy-row">
 
-Transaction ID:
-${order.transaction}
+                        <strong id="paymentNumber">
+                            01XXXXXXXXX
+                        </strong>
 
-<br><br>
+                        <button onclick="copyPaymentNumber()">
+                            COPY
+                        </button>
 
-Payment Status:
-✓ Paid
+                    </div>
 
-<br><br>
+                    <p>
+                        Send money to the selected payment number,
+                        then submit your transaction ID.
+                    </p>
 
-Order Status:
-🟡 ${order.status}
+                </div>
 
-</div>
-
-<br>
-
-<div class="notice">
-
-✓ Order Created
-<br><br>
-
-✓ Payment Submitted
-<br><br>
-
-✓ Payment Verified
-<br><br>
-
-● Processing
-<br><br>
-
-○ Completed
 
-</div>
-
-`);
+                <form id="depositForm">
 
-}
+                    <label>Amount</label>
 
+                    <input
+                        id="depositAmount"
+                        type="number"
+                        min="1"
+                        step="0.01"
+                        placeholder="Enter amount"
+                        required
+                    >
 
-/* ================= TOURNAMENT ================= */
 
-function joinTournament(){
+                    <label>Transaction ID</label>
 
-showModal(`
+                    <input
+                        id="transactionId"
+                        type="text"
+                        placeholder="Enter transaction ID"
+                        required
+                    >
 
-<h2>
-🏆 TEAM REGISTRATION
-</h2>
 
-<br>
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                    >
+                        SUBMIT DEPOSIT
+                    </button>
 
-<label>
-Team Name
-</label>
+                </form>
 
-<input
-id="teamName"
-placeholder="Enter Team Name"
->
+            </div>
 
 
-<label>
-Captain UID
-</label>
+            <h3 class="section-title">
+                Deposit History
+            </h3>
 
-<input
-placeholder="Captain UID"
->
+            <div id="depositList">
 
+                <div class="empty-state small-empty">
+                    No deposits yet.
+                </div>
 
-<label>
-Player 2 UID
-</label>
+            </div>
 
-<input
-placeholder="Player 2 UID"
->
+        </section>
 
 
-<label>
-Player 3 UID
-</label>
+        <!-- TOURNAMENT -->
+        <section id="tournamentPage" class="page">
 
-<input
-placeholder="Player 3 UID"
->
+            <div class="page-header">
 
+                <button onclick="showPage('homePage')">
+                    ←
+                </button>
 
-<label>
-Player 4 UID
-</label>
+                <div>
+                    <h2>Tournament</h2>
+                    <span>Join upcoming matches</span>
+                </div>
 
-<input
-placeholder="Player 4 UID"
->
+            </div>
 
 
-<button
-class="btn full-btn"
-style="margin-top:15px"
-onclick="tournamentContinue()">
+            <div id="tournamentList">
 
-CONTINUE — ৳50
+                <div class="loading">
+                    Loading tournaments...
+                </div>
 
-</button>
+            </div>
 
-`);
 
-}
+            <h3 class="section-title">
+                My Tournaments
+            </h3>
 
+            <div id="myTournamentList">
 
-function tournamentContinue(){
+                <div class="empty-state small-empty">
+                    No joined tournaments.
+                </div>
 
-showModal(`
+            </div>
 
-<h2>
-💳 TOURNAMENT PAYMENT
-</h2>
+        </section>
 
-<br>
 
-<div class="notice">
+        <!-- PROFILE -->
+        <section id="profilePage" class="page">
 
-Tournament:
-<b>AG D-M WEEKLY CUP</b>
+            <div class="page-header">
 
-<br><br>
+                <button onclick="showPage('homePage')">
+                    ←
+                </button>
 
-Entry Fee:
-<b>BDT 50</b>
-
-</div>
+                <div>
+                    <h2>Profile</h2>
+                    <span>My account</span>
+                </div>
 
+            </div>
 
-<button
-class="btn full-btn"
-onclick="tournamentSuccess()">
 
-CONFIRM & PAY
+            <div class="profile-card">
 
-</button>
+                <div class="profile-avatar" id="profileAvatar">
+                    A
+                </div>
 
-`);
+                <h2 id="profileName">
+                    User
+                </h2>
 
-}
+                <p id="profileUsername">
+                    @username
+                </p>
 
+                <div class="profile-balance">
+                    ৳<span id="profileBalance">0.00</span>
+                </div>
 
-function tournamentSuccess(){
+            </div>
 
-showModal(`
 
-<h2>
-🎟️ TOURNAMENT TICKET
-</h2>
+            <div class="profile-info">
 
-<br>
+                <div>
+                    <span>Name</span>
+                    <b id="infoName">-</b>
+                </div>
 
-<div class="notice success">
+                <div>
+                    <span>Username</span>
+                    <b id="infoUsername">-</b>
+                </div>
 
-✓ Registration Confirmed
+                <div>
+                    <span>Email</span>
+                    <b id="infoEmail">-</b>
+                </div>
 
-<br><br>
+                <div>
+                    <span>Account Created</span>
+                    <b id="infoCreated">-</b>
+                </div>
 
-Tournament:
-<b>AG D-M WEEKLY CUP</b>
+            </div>
 
-<br><br>
 
-Slot:
-<b>#33</b>
+            <div class="profile-actions">
 
-<br><br>
+                <button onclick="showChangePassword()">
+                    🔐 Change Password
+                </button>
 
-Entry Status:
-<b>Confirmed</b>
+                <button
+                    class="danger-btn"
+                    onclick="logout()"
+                >
+                    🚪 Logout
+                </button>
 
-</div>
+            </div>
 
+        </section>
 
-<div class="notice">
+    </main>
 
-⏰ Tournament starts at:
-<br>
 
-30 Sep 2026 • 9:00 PM
+    <!-- =================================================
+         BOTTOM NAV
+    ================================================== -->
 
-</div>
+    <nav id="bottomNav" class="bottom-nav hidden">
 
-`);
+        <button
+            class="nav-item active"
+            data-page="homePage"
+            onclick="showPage('homePage')"
+        >
+            <span>⌂</span>
+            <small>Home</small>
+        </button>
 
-}
 
+        <button
+            class="nav-item"
+            data-page="ordersPage"
+            onclick="showPage('ordersPage')"
+        >
+            <span>▣</span>
+            <small>Orders</small>
+        </button>
 
-/* ================= WALLET ================= */
 
-function addMoney(){
+        <button
+            class="nav-item nav-main"
+            data-page="topupPage"
+            onclick="showPage('topupPage')"
+        >
+            <span>💎</span>
+            <small>Top Up</small>
+        </button>
 
-const amount =
-document.getElementById(
-"walletAmount"
-).value;
 
+        <button
+            class="nav-item"
+            data-page="tournamentPage"
+            onclick="showPage('tournamentPage')"
+        >
+            <span>🏆</span>
+            <small>Games</small>
+        </button>
 
-const transaction =
-document.getElementById(
-"walletTransaction"
-).value;
 
+        <button
+            class="nav-item"
+            data-page="profilePage"
+            onclick="showPage('profilePage')"
+        >
+            <span>👤</span>
+            <small>Profile</small>
+        </button>
 
-if(!amount || !transaction){
+    </nav>
 
-alert(
-"Amount এবং Transaction ID দিন।"
-);
 
-return;
+    <!-- =================================================
+         MODAL
+    ================================================== -->
 
-}
+    <div id="modal" class="modal hidden">
 
+        <div class="modal-box">
 
-showModal(`
+            <button
+                class="modal-close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
 
-<h2>
-💵 DEPOSIT SUBMITTED
-</h2>
+            <div id="modalContent"></div>
 
-<br>
+        </div>
 
-<div class="notice success">
+    </div>
 
-Amount:
-<b>BDT ${amount}</b>
 
-<br><br>
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
 
-Status:
-🟡 Verification Pending
 
 </div>
-
-`);
-
-}
-
-
-/* ================= SUPPORT ================= */
-
-function support(){
-
-showModal(`
-
-<h2>
-🎧 SUPPORT
-</h2>
-
-<br>
-
-<button
-class="btn btn-dark full-btn">
-
-💬 WhatsApp
-
-</button>
-
-<br><br>
-
-<button
-class="btn btn-dark full-btn">
-
-✈️ Telegram
-
-</button>
-
-<br><br>
-
-<button
-class="btn btn-dark full-btn">
-
-📧 Email
-
-</button>
-
-<br><br>
-
-<button
-class="btn btn-dark full-btn">
-
-🎫 Support Ticket
-
-</button>
-
-`);
-
-}
-
-
-/* ================= MODAL ================= */
-
-function showModal(html){
-
-document.getElementById(
-"modalContent"
-).innerHTML = html;
-
-
-document.getElementById(
-"modal"
-).classList.add("show");
-
-}
-
-
-function closeModal(){
-
-document.getElementById(
-"modal"
-).classList.remove("show");
-
-}
-
-
-function closeOutside(event){
-
-if(event.target.id === "modal"){
-
-closeModal();
-
-}
-
-}
-
-
-/* ================= SIDE MENU ================= */
-
-function openMenu(){
-
-document.getElementById(
-"sideMenu"
-).classList.add("show");
-
-}
-
-
-function closeMenu(){
-
-document.getElementById(
-"sideMenu"
-).classList.remove("show");
-
-}
-
-
-function closeMenuOutside(event){
-
-if(event.target.id === "sideMenu"){
-
-closeMenu();
-
-}
-
-}
-
-
-function menuGo(page){
-
-closeMenu();
-
-openPage(page);
-
-}
-
-
-/* ================= START ================= */
-
-renderCategories();
-
-renderProducts();
-
-renderPopular();
 
-renderOrders();
 
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
