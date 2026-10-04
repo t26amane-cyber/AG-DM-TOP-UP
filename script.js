@@ -1,99 +1,123 @@
-/* ==================================================
-   AG D-M TOP UP
-   PAGE 1 + PAGE 2
-   ONLY JAVASCRIPT
-   ================================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    /* ---------- PAGE REFERENCES ---------- */
+document.addEventListener("DOMContentLoaded", function () {
 
     const page1 = document.getElementById("page-1");
     const page2 = document.getElementById("page-2");
 
-    const loginBox = document.getElementById("login");
-    const registerBox = document.getElementById("registration");
-    const forgotBox = document.getElementById("forgot-password");
+    const login = document.getElementById("login");
+    const registration = document.getElementById("registration");
+    const forgot = document.getElementById("forgot-password");
 
-    /* ---------- HIDE PAGE 2 INITIALLY ---------- */
-
-    if (page2) {
+    function showLogin() {
+        login.style.display = "block";
+        registration.style.display = "none";
+        forgot.style.display = "none";
+        page1.style.display = "block";
         page2.style.display = "none";
     }
 
-    /* ---------- PAGE SWITCH ---------- */
-
-    function showLogin() {
-        loginBox.style.display = "block";
-        registerBox.style.display = "none";
-        forgotBox.style.display = "none";
+    function showRegistration() {
+        login.style.display = "none";
+        registration.style.display = "block";
+        forgot.style.display = "none";
     }
 
-    function showRegister() {
-        loginBox.style.display = "none";
-        registerBox.style.display = "block";
-        forgotBox.style.display = "none";
+    function showForgot() {
+        login.style.display = "none";
+        registration.style.display = "none";
+        forgot.style.display = "block";
     }
 
-    function showForgotPassword() {
-        loginBox.style.display = "none";
-        registerBox.style.display = "none";
-        forgotBox.style.display = "block";
+    function showHome() {
+        page1.style.display = "none";
+        page2.style.display = "block";
+        window.scrollTo(0, 0);
     }
 
-    /* ---------- INITIAL VIEW ---------- */
+    /* Initial page */
 
     showLogin();
 
 
-    /* ---------- NAVIGATION LINKS ---------- */
+    /* Login → Register */
 
-    document.querySelectorAll('a[href="#registration"]').forEach(link => {
-        link.addEventListener("click", event => {
-            event.preventDefault();
-            showRegister();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+    document.querySelectorAll(
+        'a[href="#registration"]'
+    ).forEach(function (link) {
+
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            showRegistration();
         });
+
     });
 
 
-    document.querySelectorAll('a[href="#login"]').forEach(link => {
-        link.addEventListener("click", event => {
-            event.preventDefault();
+    /* Register → Login */
+
+    document.querySelectorAll(
+        'a[href="#login"]'
+    ).forEach(function (link) {
+
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
             showLogin();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
         });
+
     });
 
 
-    document.querySelectorAll('a[href="#forgot-password"]').forEach(link => {
-        link.addEventListener("click", event => {
-            event.preventDefault();
-            showForgotPassword();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+    /* Forgot Password */
+
+    document.querySelectorAll(
+        'a[href="#forgot-password"]'
+    ).forEach(function (link) {
+
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            showForgot();
         });
+
     });
 
 
-    /* ==================================================
-       PAGE 1 — REGISTRATION
-       ================================================== */
+    /* Login form */
+
+    const loginForm = login.querySelector("form");
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const user =
+            document.getElementById("login-email").value.trim();
+
+        const password =
+            document.getElementById("login-password").value;
+
+        if (!user || !password) {
+            alert("Please enter Email/Mobile and Password.");
+            return;
+        }
+
+        /*
+         * Real authentication will be connected
+         * with Google Cloud / backend here.
+         *
+         * Page 2 is currently DEMO as requested.
+         */
+
+        showHome();
+    });
+
+
+    /* Registration */
 
     const registrationForm =
-        registerBox.querySelector("form");
+        registration.querySelector("form");
 
-    registrationForm.addEventListener("submit", event => {
+    registrationForm.addEventListener("submit", function (e) {
 
-        event.preventDefault();
+        e.preventDefault();
 
         const name =
             document.getElementById("full-name").value.trim();
@@ -104,105 +128,64 @@ document.addEventListener("DOMContentLoaded", () => {
         const password =
             document.getElementById("register-password").value;
 
-        const confirmPassword =
+        const confirm =
             document.getElementById("confirm-password").value;
 
-
-        if (!name || !email || !password || !confirmPassword) {
-            alert("Please complete all fields.");
+        if (!name || !email || !password || !confirm) {
+            alert("Please fill in all fields.");
             return;
         }
-
 
         if (password.length < 8) {
-            alert("Password must contain at least 8 characters.");
+            alert("Password must be at least 8 characters.");
             return;
         }
 
-
-        if (password !== confirmPassword) {
+        if (password !== confirm) {
             alert("Passwords do not match.");
             return;
         }
 
+        /*
+         * Real account creation will be connected
+         * with Google Cloud / backend here.
+         */
 
         alert(
-            "Registration form validated.\n\n" +
-            "Real account creation requires your backend / Google Cloud authentication."
+            "Registration information is valid.\n" +
+            "Google Cloud authentication will handle the real account."
         );
+
     });
 
 
-    /* ==================================================
-       PAGE 1 — LOGIN
-       ================================================== */
-
-    const loginForm =
-        loginBox.querySelector("form");
-
-    loginForm.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        const email =
-            document.getElementById("login-email").value.trim();
-
-        const password =
-            document.getElementById("login-password").value;
-
-
-        if (!email || !password) {
-            alert("Please enter your login information.");
-            return;
-        }
-
-
-        alert(
-            "Login form submitted.\n\n" +
-            "Connect your real authentication backend / Google Cloud here."
-        );
-    });
-
-
-    /* ==================================================
-       PAGE 1 — FORGOT PASSWORD
-       ================================================== */
+    /* Forgot Password */
 
     const forgotForm =
-        forgotBox.querySelector("form");
+        forgot.querySelector("form");
 
-    forgotForm.addEventListener("submit", event => {
+    forgotForm.addEventListener("submit", function (e) {
 
-        event.preventDefault();
+        e.preventDefault();
 
-        const email =
+        const value =
             document.getElementById("reset-email").value.trim();
 
-
-        if (!email) {
-            alert("Please enter your email or mobile number.");
+        if (!value) {
+            alert("Enter your Email or Mobile Number.");
             return;
         }
 
-
         alert(
-            "Password reset request received.\n\n" +
-            "Real OTP delivery requires a backend authentication service."
+            "Password reset will be handled by the real authentication system."
         );
+
     });
 
 
-    /* ==================================================
-       GOOGLE BUTTONS
-       ================================================== */
+    /* Google buttons */
 
-    const googleButtons =
-        document.querySelectorAll(
-            'button[type="button"]'
-        );
-
-
-    googleButtons.forEach(button => {
+    document.querySelectorAll("button").forEach(function (button) {
 
         if (
             button.textContent
@@ -210,19 +193,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 .includes("google")
         ) {
 
-            button.addEventListener("click", () => {
+            button.classList.add("google-btn");
+
+            button.addEventListener("click", function () {
 
                 /*
-                 * REAL GOOGLE AUTHENTICATION
-                 *
-                 * This button is intentionally NOT a fake login.
-                 *
-                 * Google Cloud / Firebase Authentication
-                 * configuration must be connected here.
+                 * IMPORTANT:
+                 * This is NOT fake Google authentication.
+                 * Google Cloud OAuth configuration
+                 * must be connected here.
                  */
 
                 alert(
-                    "Google Sign-In is ready for Google Cloud Authentication integration."
+                    "Google Sign-In is not connected yet. " +
+                    "Connect Google Cloud Authentication to enable it."
                 );
 
             });
@@ -232,39 +216,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ==================================================
-       PAGE 2 — PRODUCT BUTTONS
-       ================================================== */
+    /* Product buttons */
 
-    const productButtons =
-        document.querySelectorAll(
-            "#mega-offer article button, " +
-            "#ff-topup article button, " +
-            "#social-media article button"
-        );
+    document.querySelectorAll(
+        "#mega-offer article button, " +
+        "#ff-topup article button, " +
+        "#social-media article button"
+    ).forEach(function (button) {
 
+        button.addEventListener("click", function () {
 
-    productButtons.forEach(button => {
+            const card = button.closest("article");
 
-        button.addEventListener("click", () => {
-
-            const product =
-                button.closest("article");
-
-            const productName =
-                product.querySelector("h3")
-                    ?.textContent
-                    .trim();
-
-            if (!productName) {
-                return;
-            }
-
+            const name =
+                card.querySelector("h3").textContent.trim();
 
             alert(
                 "Selected Product:\n\n" +
-                productName +
-                "\n\nPackage / order system will be connected later."
+                name +
+                "\n\nPackage/order system will be added later."
             );
 
         });
@@ -272,58 +242,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ==================================================
-       START ORDER
-       ================================================== */
+    /* Start Order */
 
-    const startOrderButton =
+    const startOrder =
         document.querySelector(
-            '#page-2 main > section:first-child button'
+            "#page-2 main > section:first-child button"
         );
 
+    if (startOrder) {
 
-    if (startOrderButton) {
-
-        startOrderButton.addEventListener("click", () => {
+        startOrder.addEventListener("click", function () {
 
             document.getElementById("mega-offer")
-                ?.scrollIntoView({
+                .scrollIntoView({
                     behavior: "smooth"
                 });
 
         });
 
     }
-
-
-    /* ==================================================
-       PAGE 2 NAVIGATION
-       ================================================== */
-
-    document.querySelectorAll(
-        '#page-2 nav a[href^="#"]'
-    ).forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            const target =
-                document.querySelector(
-                    link.getAttribute("href")
-                );
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-
-        });
-
-    });
 
 });
