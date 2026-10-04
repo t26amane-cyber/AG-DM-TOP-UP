@@ -1,13 +1,7 @@
-/* ==================================================
-   AG D-M TOP UP
-   PAGE 1 + PAGE 2
-   ONLY CSS
-   ================================================== */
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -16,247 +10,207 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #0b0f19;
-    color: #ffffff;
-    line-height: 1.6;
+    background: #070b14;
+    color: #fff;
 }
 
-/* ---------- GLOBAL ---------- */
-
-section {
-    width: 100%;
-}
-
-main {
-    width: min(1200px, 92%);
-    margin: auto;
-}
-
-h1,
-h2,
-h3 {
-    line-height: 1.3;
-}
-
-a {
-    color: #00d9ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    transition: 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-}
-
-/* ==================================================
-   PAGE 1 — LOGIN / REGISTRATION
-   ================================================== */
+/* =========================
+   PAGE 1
+========================= */
 
 #page-1 {
     min-height: 100vh;
-    padding-bottom: 60px;
     background:
-        radial-gradient(circle at top, #18244a 0%, #0b0f19 48%);
+        radial-gradient(circle at top, #172d58, #070b14 55%);
+    padding-bottom: 50px;
 }
 
 #page-1 > header {
     text-align: center;
-    padding: 55px 20px 30px;
+    padding: 45px 20px 25px;
 }
 
 #page-1 > header h1 {
-    font-size: clamp(30px, 6vw, 52px);
+    font-size: 34px;
     font-weight: 900;
     color: #00e5ff;
-    letter-spacing: 1px;
 }
 
 #page-1 > header p {
     margin-top: 8px;
-    color: #aeb9cf;
+    color: #9daac0;
 }
 
-/* Login / Registration / Forgot */
-
 #page-1 main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    align-items: start;
+    width: min(440px, 92%);
+    margin: auto;
 }
 
 #page-1 main > div {
-    background: rgba(20, 27, 45, 0.95);
-    border: 1px solid #263452;
-    border-radius: 18px;
+    background: #111827;
+    border: 1px solid #263552;
+    border-radius: 20px;
     padding: 28px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
 }
 
 #page-1 main h2 {
+    font-size: 26px;
     margin-bottom: 22px;
-    color: #ffffff;
-    font-size: 25px;
 }
 
 #page-1 label {
-    display: inline-block;
-    margin-bottom: 7px;
-    color: #c8d2e5;
+    display: block;
+    color: #c8d2e4;
     font-size: 14px;
-    font-weight: 600;
+    margin-bottom: 7px;
 }
 
 #page-1 input {
     width: 100%;
-    height: 48px;
-    padding: 0 14px;
-    background: #0c1220;
-    color: #ffffff;
-    border: 1px solid #33415f;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #33445f;
     border-radius: 10px;
     outline: none;
-    font-size: 14px;
+    background: #080d18;
+    color: white;
+    font-size: 15px;
 }
 
 #page-1 input:focus {
-    border-color: #00d9ff;
-    box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+    border-color: #00e5ff;
+    box-shadow: 0 0 0 3px rgba(0,229,255,.12);
 }
 
 #page-1 form button {
     width: 100%;
-    min-height: 48px;
+    height: 50px;
+    border: 0;
     border-radius: 10px;
-    background: #00d9ff;
-    color: #061018;
+    background: linear-gradient(135deg, #00e5ff, #008cff);
+    color: #001018;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+#page-1 form button:hover {
+    transform: translateY(-2px);
+}
+
+#page-1 form button.google-btn {
+    background: #fff;
+    color: #222;
+}
+
+#page-1 .forgot-link {
+    display: block;
+    margin: 15px 0 20px;
+    color: #00e5ff;
     font-size: 14px;
 }
 
-#page-1 form button[type="button"] {
-    background: #ffffff;
-    color: #202633;
-}
-
-#page-1 form p {
+#page-1 .or {
     text-align: center;
-    color: #7f8ba3;
-    margin: 12px 0;
-    font-size: 13px;
+    color: #69778e;
+    margin: 15px 0;
 }
 
-#page-1 main > div > p {
-    color: #8996ad;
+#page-1 .switch-text {
+    text-align: center;
+    color: #8794a9;
+    margin-top: 22px;
     font-size: 14px;
 }
 
-#page-1 main > div > p a {
-    color: #00d9ff;
+#page-1 .switch-text a {
+    color: #00e5ff;
     font-weight: 700;
 }
 
-/* ==================================================
-   PAGE 2 — HOME
-   ================================================== */
-
-#page-2 {
-    background: #0b0f19;
-    min-height: 100vh;
+#registration,
+#forgot-password {
+    display: none;
 }
 
-/* Header */
+/* =========================
+   PAGE 2
+========================= */
+
+#page-2 {
+    display: none;
+    min-height: 100vh;
+    background: #070b14;
+}
 
 #page-2 > header {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 16px 4%;
-    background: rgba(8, 12, 22, 0.95);
-    border-bottom: 1px solid #202b43;
-    backdrop-filter: blur(12px);
+    padding: 16px 5%;
+    background: rgba(7,11,20,.96);
+    border-bottom: 1px solid #263552;
 }
 
 #page-2 > header h1 {
     display: inline-block;
     color: #00e5ff;
-    font-size: 25px;
-    font-weight: 900;
 }
 
 #page-2 nav {
     float: right;
-    padding-top: 4px;
 }
 
 #page-2 nav a {
-    margin-left: 18px;
-    color: #cbd5e8;
+    color: #d8e1ef;
+    margin-left: 15px;
     font-size: 14px;
-    font-weight: 600;
+    text-decoration: none;
 }
 
 #page-2 nav a:hover {
     color: #00e5ff;
-    text-decoration: none;
+}
+
+#page-2 main {
+    width: min(1200px, 92%);
+    margin: auto;
 }
 
 /* Hero */
 
 #page-2 main > section:first-child {
-    margin: 35px auto 50px;
-    padding: 65px 30px;
+    margin: 30px 0 45px;
+    padding: 65px 25px;
     text-align: center;
-    border: 1px solid #273553;
+    border: 1px solid #263552;
     border-radius: 24px;
     background:
-        radial-gradient(circle at center, #192c52 0%, #101727 45%, #0d1320 100%);
+        radial-gradient(circle, #193867, #101827 65%);
 }
 
 #page-2 main > section:first-child h2 {
-    font-size: clamp(34px, 7vw, 64px);
+    font-size: clamp(35px, 7vw, 65px);
     color: #00e5ff;
-    font-weight: 900;
 }
 
 #page-2 main > section:first-child p {
-    color: #b7c3d9;
-    margin-top: 10px;
+    color: #aebbd0;
+    margin-top: 8px;
 }
 
 #page-2 main > section:first-child button {
     margin-top: 25px;
     padding: 14px 30px;
+    border: 0;
     border-radius: 10px;
-    background: #00d9ff;
-    color: #061018;
+    background: #00e5ff;
+    color: #001018;
+    font-weight: 800;
 }
 
-/* Category */
-
-#mega-offer,
-#ff-topup,
-#social-media {
-    padding: 20px 0 45px;
-}
-
-#mega-offer > h2,
-#ff-topup > h2,
-#social-media > h2 {
-    margin-bottom: 22px;
-    font-size: 28px;
-}
-
-/* Product Grid */
+/* Categories */
 
 #mega-offer,
 #ff-topup,
@@ -264,81 +218,73 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
+    margin-bottom: 45px;
 }
 
 #mega-offer > h2,
 #ff-topup > h2,
 #social-media > h2 {
     grid-column: 1 / -1;
+    font-size: 27px;
 }
 
-/* Product Card */
+/* Product cards */
 
 #mega-offer article,
 #ff-topup article,
 #social-media article {
-    position: relative;
+    background: #111827;
+    border: 1px solid #263552;
+    border-radius: 16px;
     padding: 22px;
     min-height: 190px;
-    background: #141b2c;
-    border: 1px solid #273552;
-    border-radius: 16px;
-    transition: 0.25s ease;
+    transition: .25s;
 }
 
 #mega-offer article:hover,
 #ff-topup article:hover,
 #social-media article:hover {
     transform: translateY(-5px);
-    border-color: #00d9ff;
-    box-shadow: 0 12px 35px rgba(0, 217, 255, 0.1);
+    border-color: #00e5ff;
 }
 
-#mega-offer article h3,
-#ff-topup article h3,
-#social-media article h3 {
+article h3 {
     font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-#mega-offer article p,
-#ff-topup article p,
-#social-media article p {
-    color: #8f9cb4;
+article p {
+    color: #8f9db3;
     font-size: 14px;
-    margin-bottom: 6px;
+    margin: 5px 0;
 }
 
-#mega-offer article button,
-#ff-topup article button,
-#social-media article button {
-    margin-top: 14px;
-    padding: 10px 17px;
+article button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: 0;
     border-radius: 8px;
-    background: #00d9ff;
-    color: #061018;
+    background: #00e5ff;
+    color: #001018;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-/* My Orders */
+/* Orders / Account */
 
 #my-orders,
 #account {
-    margin: 35px auto;
-    padding: 28px;
-    background: #141b2c;
-    border: 1px solid #273552;
+    background: #111827;
+    border: 1px solid #263552;
     border-radius: 16px;
-}
-
-#my-orders h2,
-#account h2 {
-    margin-bottom: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
 }
 
 #my-orders p,
 #account p {
-    color: #9aa7bd;
+    color: #9aa7bb;
+    margin-top: 8px;
 }
 
 /* Footer */
@@ -347,42 +293,20 @@ button:hover {
     margin-top: 50px;
     padding: 40px 20px;
     text-align: center;
-    background: #080c15;
-    color: #8490a5;
+    background: #050810;
+    color: #7f8ba0;
 }
 
 #page-2 footer h3 {
     color: #00e5ff;
-    margin: 15px 0 8px;
+    margin-bottom: 8px;
 }
 
-#page-2 footer p {
-    font-size: 13px;
-}
+/* =========================
+   MOBILE
+========================= */
 
-
-/* ==================================================
-   RESPONSIVE
-   ================================================== */
-
-@media (max-width: 900px) {
-
-    #page-1 main {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    #page-1 main > div:last-child {
-        grid-column: 1 / -1;
-        max-width: 500px;
-        width: 100%;
-        margin: auto;
-    }
-
-    #mega-offer,
-    #ff-topup,
-    #social-media {
-        grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 800px) {
 
     #page-2 > header {
         text-align: center;
@@ -390,31 +314,32 @@ button:hover {
 
     #page-2 > header h1 {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
     #page-2 nav {
         float: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
 
     #page-2 nav a {
-        margin: 0 7px;
+        margin: 0;
+    }
+
+    #mega-offer,
+    #ff-topup,
+    #social-media {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 520px) {
 
-@media (max-width: 600px) {
-
-    #page-1 > header {
-        padding-top: 35px;
-    }
-
-    #page-1 main {
-        grid-template-columns: 1fr;
-    }
-
-    #page-1 main > div:last-child {
-        grid-column: auto;
+    #page-1 > header h1 {
+        font-size: 28px;
     }
 
     #page-1 main > div {
@@ -428,18 +353,6 @@ button:hover {
     }
 
     #page-2 main > section:first-child {
-        padding: 45px 20px;
-    }
-
-    #page-2 nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    #page-2 nav a {
-        margin: 0;
-        font-size: 12px;
+        padding: 45px 18px;
     }
 }
