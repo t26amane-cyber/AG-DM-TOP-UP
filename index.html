@@ -4,857 +4,655 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG D-M TOP UP</title>
-
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     APP
-===================================================== -->
+    <!-- ==================================================
+         PAGE 1 — LOGIN / REGISTRATION
+         ================================================== -->
 
-<div id="app">
+    <section id="page-1">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
+        <header>
+            <h1>AG D-M TOP UP</h1>
+            <p>Welcome to AG D-M TOP UP</p>
+        </header>
 
-        <div class="brand">
-            <div class="brand-logo">AG</div>
+        <main>
 
-            <div>
-                <h1>AG D-M</h1>
-                <span>TOP UP</span>
-            </div>
-        </div>
+            <!-- LOGIN -->
+            <div id="login">
 
-        <button class="icon-btn" onclick="openProfile()">
-            👤
-        </button>
+                <h2>Login</h2>
 
-    </header>
+                <form>
 
-
-    <!-- =================================================
-         AUTH
-    ================================================== -->
-
-    <main id="authScreen" class="auth-screen">
-
-        <!-- LOGIN -->
-        <section id="loginPage" class="auth-card">
-
-            <div class="auth-logo">AG</div>
-
-            <h2>Welcome Back</h2>
-            <p class="muted">
-                Login to your AG D-M account
-            </p>
-
-            <form id="loginForm">
-
-                <label>
-                    Username / Email
-                </label>
-
-                <input
-                    id="loginValue"
-                    type="text"
-                    placeholder="Username or email"
-                    autocomplete="username"
-                    required
-                >
-
-                <label>
-                    Password
-                </label>
-
-                <input
-                    id="loginPassword"
-                    type="password"
-                    placeholder="Your password"
-                    autocomplete="current-password"
-                    required
-                >
-
-                <button class="primary-btn" type="submit">
-                    LOGIN
-                </button>
-
-            </form>
-
-            <button class="text-btn" onclick="showForgot()">
-                Forgot Password?
-            </button>
-
-            <div class="auth-switch">
-                Don't have an account?
-                <button onclick="showRegister()">Register</button>
-            </div>
-
-        </section>
-
-
-        <!-- REGISTER -->
-        <section id="registerPage" class="auth-card hidden">
-
-            <div class="auth-logo">AG</div>
-
-            <h2>Create Account</h2>
-            <p class="muted">
-                Join AG D-M TOP UP
-            </p>
-
-            <form id="registerForm">
-
-                <label>Name</label>
-
-                <input
-                    id="regName"
-                    type="text"
-                    placeholder="Your name"
-                    required
-                >
-
-                <label>Username</label>
-
-                <input
-                    id="regUsername"
-                    type="text"
-                    placeholder="Choose username"
-                    required
-                >
-
-                <label>Email</label>
-
-                <input
-                    id="regEmail"
-                    type="email"
-                    placeholder="example@email.com"
-                    required
-                >
-
-                <label>Password</label>
-
-                <input
-                    id="regPassword"
-                    type="password"
-                    placeholder="Minimum 6 characters"
-                    required
-                >
-
-                <label>Confirm Password</label>
-
-                <input
-                    id="regConfirmPassword"
-                    type="password"
-                    placeholder="Confirm password"
-                    required
-                >
-
-                <button class="primary-btn" type="submit">
-                    CREATE ACCOUNT
-                </button>
-
-            </form>
-
-            <div class="auth-switch">
-                Already have an account?
-                <button onclick="showLogin()">Login</button>
-            </div>
-
-        </section>
-
-
-        <!-- FORGOT PASSWORD -->
-        <section id="forgotPage" class="auth-card hidden">
-
-            <div class="auth-logo">AG</div>
-
-            <h2>Forgot Password</h2>
-
-            <p class="muted">
-                Enter your registered email.
-            </p>
-
-            <form id="forgotForm">
-
-                <label>Email</label>
-
-                <input
-                    id="forgotEmail"
-                    type="email"
-                    placeholder="Your registered email"
-                    required
-                >
-
-                <button class="primary-btn" type="submit">
-                    SEND RESET REQUEST
-                </button>
-
-            </form>
-
-            <button class="text-btn" onclick="showLogin()">
-                ← Back to Login
-            </button>
-
-        </section>
-
-    </main>
-
-
-    <!-- =================================================
-         MAIN APP
-    ================================================== -->
-
-    <main id="mainApp" class="main-app hidden">
-
-
-        <!-- HOME -->
-        <section id="homePage" class="page active">
-
-            <div class="welcome">
-                <div>
-                    <span class="small-label">WELCOME BACK</span>
-                    <h2 id="welcomeName">User</h2>
-                </div>
-
-                <div class="live-dot">
-                    ● LIVE
-                </div>
-            </div>
-
-
-            <!-- BALANCE -->
-            <div class="balance-card">
-
-                <div class="balance-top">
-                    <span>Available Balance</span>
-                    <span>BDT</span>
-                </div>
-
-                <div class="balance-value">
-                    ৳<span id="homeBalance">0.00</span>
-                </div>
-
-                <div class="balance-actions">
-
-                    <button onclick="showPage('addMoneyPage')">
-                        + Add Money
-                    </button>
-
-                    <button onclick="showPage('ordersPage')">
-                        My Orders
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- QUICK ACTIONS -->
-            <h3 class="section-title">
-                Quick Access
-            </h3>
-
-            <div class="quick-grid">
-
-                <button onclick="showPage('topupPage')">
-                    <span>💎</span>
-                    <b>Diamond Top Up</b>
-                    <small>Instant order</small>
-                </button>
-
-                <button onclick="showPage('addMoneyPage')">
-                    <span>💰</span>
-                    <b>Add Money</b>
-                    <small>Deposit balance</small>
-                </button>
-
-                <button onclick="showPage('tournamentPage')">
-                    <span>🏆</span>
-                    <b>Tournament</b>
-                    <small>Join & play</small>
-                </button>
-
-                <button onclick="showPage('profilePage')">
-                    <span>👤</span>
-                    <b>Profile</b>
-                    <small>My account</small>
-                </button>
-
-            </div>
-
-
-            <!-- TOP UP -->
-            <div class="promo-card">
-
-                <div>
-                    <span class="small-label">FREE FIRE</span>
-
-                    <h3>
-                        Diamond Top Up
-                    </h3>
-
-                    <p>
-                        Fast and easy recharge.
-                    </p>
-
-                    <button
-                        class="primary-btn small-btn"
-                        onclick="showPage('topupPage')"
-                    >
-                        TOP UP NOW
-                    </button>
-                </div>
-
-                <div class="promo-icon">
-                    💎
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOP UP -->
-        <section id="topupPage" class="page">
-
-            <div class="page-header">
-                <button onclick="showPage('homePage')">
-                    ←
-                </button>
-
-                <div>
-                    <h2>Diamond Top Up</h2>
-                    <span>Free Fire</span>
-                </div>
-            </div>
-
-
-            <form id="orderForm" class="form-card">
-
-                <label>Player UID</label>
-
-                <input
-                    id="orderUid"
-                    type="text"
-                    inputmode="numeric"
-                    placeholder="Enter Free Fire UID"
-                    required
-                >
-
-
-                <label>Server</label>
-
-                <select id="orderServer">
-
-                    <option value="BD">Bangladesh</option>
-                    <option value="IND">India</option>
-                    <option value="BR">Brazil</option>
-                    <option value="US">USA</option>
-                    <option value="SAC">SAC</option>
-                    <option value="NA">North America</option>
-                    <option value="TH">Thailand</option>
-                    <option value="ID">Indonesia</option>
-                    <option value="SG">Singapore</option>
-                    <option value="PK">Pakistan</option>
-
-                </select>
-
-
-                <label>Diamond Package</label>
-
-                <div class="package-grid">
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="25"
-                            data-price="20"
-                            checked
-                        >
-
-                        <span>
-                            💎 25
-                        </span>
-
-                        <b>৳20</b>
+                    <label for="login-email">
+                        Email / Mobile Number
                     </label>
-
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="50"
-                            data-price="35"
-                        >
-
-                        <span>
-                            💎 50
-                        </span>
-
-                        <b>৳35</b>
-                    </label>
-
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="100"
-                            data-price="65"
-                        >
-
-                        <span>
-                            💎 100
-                        </span>
-
-                        <b>৳65</b>
-                    </label>
-
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="310"
-                            data-price="190"
-                        >
-
-                        <span>
-                            💎 310
-                        </span>
-
-                        <b>৳190</b>
-                    </label>
-
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="520"
-                            data-price="320"
-                        >
-
-                        <span>
-                            💎 520
-                        </span>
-
-                        <b>৳320</b>
-                    </label>
-
-
-                    <label class="package">
-                        <input
-                            type="radio"
-                            name="package"
-                            value="1060"
-                            data-price="640"
-                        >
-
-                        <span>
-                            💎 1060
-                        </span>
-
-                        <b>৳640</b>
-                    </label>
-
-                </div>
-
-
-                <div class="order-total">
-
-                    <span>Total</span>
-
-                    <strong>
-                        ৳<span id="selectedPrice">20</span>
-                    </strong>
-
-                </div>
-
-
-                <button class="primary-btn" type="submit">
-                    PLACE ORDER
-                </button>
-
-            </form>
-
-        </section>
-
-
-        <!-- ORDERS -->
-        <section id="ordersPage" class="page">
-
-            <div class="page-header">
-
-                <button onclick="showPage('homePage')">
-                    ←
-                </button>
-
-                <div>
-                    <h2>My Orders</h2>
-                    <span>Order history</span>
-                </div>
-
-            </div>
-
-            <div id="ordersList">
-
-                <div class="empty-state">
-                    <div>📦</div>
-                    <h3>No orders yet</h3>
-                    <p>Your orders will appear here.</p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ADD MONEY -->
-        <section id="addMoneyPage" class="page">
-
-            <div class="page-header">
-
-                <button onclick="showPage('homePage')">
-                    ←
-                </button>
-
-                <div>
-                    <h2>Add Money</h2>
-                    <span>Deposit to wallet</span>
-                </div>
-
-            </div>
-
-
-            <div class="deposit-card">
-
-                <div class="deposit-methods">
-
-                    <button
-                        class="method active"
-                        data-method="bKash"
-                        onclick="selectPaymentMethod(this)"
-                    >
-                        <b>বিকাশ</b>
-                        <small>bKash</small>
-                    </button>
-
-                    <button
-                        class="method"
-                        data-method="Nagad"
-                        onclick="selectPaymentMethod(this)"
-                    >
-                        <b>নগদ</b>
-                        <small>Nagad</small>
-                    </button>
-
-                    <button
-                        class="method"
-                        data-method="AG Wallet"
-                        onclick="selectPaymentMethod(this)"
-                    >
-                        <b>AG</b>
-                        <small>AG Wallet</small>
-                    </button>
-
-                </div>
-
-
-                <div class="payment-info">
-
-                    <span>Payment Number</span>
-
-                    <div class="copy-row">
-
-                        <strong id="paymentNumber">
-                            01XXXXXXXXX
-                        </strong>
-
-                        <button onclick="copyPaymentNumber()">
-                            COPY
-                        </button>
-
-                    </div>
-
-                    <p>
-                        Send money to the selected payment number,
-                        then submit your transaction ID.
-                    </p>
-
-                </div>
-
-
-                <form id="depositForm">
-
-                    <label>Amount</label>
-
+                    <br>
                     <input
-                        id="depositAmount"
-                        type="number"
-                        min="1"
-                        step="0.01"
-                        placeholder="Enter amount"
-                        required
-                    >
-
-
-                    <label>Transaction ID</label>
-
-                    <input
-                        id="transactionId"
                         type="text"
-                        placeholder="Enter transaction ID"
-                        required
+                        id="login-email"
+                        name="login-email"
+                        placeholder="Enter email or mobile number"
                     >
+                    <br><br>
 
-
-                    <button
-                        class="primary-btn"
-                        type="submit"
+                    <label for="login-password">
+                        Password
+                    </label>
+                    <br>
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="login-password"
+                        placeholder="Enter password"
                     >
-                        SUBMIT DEPOSIT
+                    <br><br>
+
+                    <a href="#forgot-password">
+                        Forgot Password?
+                    </a>
+
+                    <br><br>
+
+                    <button type="submit">
+                        LOGIN
+                    </button>
+
+                    <br><br>
+
+                    <p>OR</p>
+
+                    <button type="button">
+                        Continue with Google
                     </button>
 
                 </form>
 
-            </div>
+                <br>
 
-
-            <h3 class="section-title">
-                Deposit History
-            </h3>
-
-            <div id="depositList">
-
-                <div class="empty-state small-empty">
-                    No deposits yet.
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOURNAMENT -->
-        <section id="tournamentPage" class="page">
-
-            <div class="page-header">
-
-                <button onclick="showPage('homePage')">
-                    ←
-                </button>
-
-                <div>
-                    <h2>Tournament</h2>
-                    <span>Join upcoming matches</span>
-                </div>
-
-            </div>
-
-
-            <div id="tournamentList">
-
-                <div class="loading">
-                    Loading tournaments...
-                </div>
-
-            </div>
-
-
-            <h3 class="section-title">
-                My Tournaments
-            </h3>
-
-            <div id="myTournamentList">
-
-                <div class="empty-state small-empty">
-                    No joined tournaments.
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- PROFILE -->
-        <section id="profilePage" class="page">
-
-            <div class="page-header">
-
-                <button onclick="showPage('homePage')">
-                    ←
-                </button>
-
-                <div>
-                    <h2>Profile</h2>
-                    <span>My account</span>
-                </div>
-
-            </div>
-
-
-            <div class="profile-card">
-
-                <div class="profile-avatar" id="profileAvatar">
-                    A
-                </div>
-
-                <h2 id="profileName">
-                    User
-                </h2>
-
-                <p id="profileUsername">
-                    @username
+                <p>
+                    Don't have an account?
+                    <a href="#registration">
+                        Create Account
+                    </a>
                 </p>
 
-                <div class="profile-balance">
-                    ৳<span id="profileBalance">0.00</span>
-                </div>
+            </div>
+
+
+            <!-- REGISTRATION -->
+            <div id="registration">
+
+                <h2>Create Account</h2>
+
+                <form>
+
+                    <label for="full-name">
+                        Full Name
+                    </label>
+                    <br>
+                    <input
+                        type="text"
+                        id="full-name"
+                        name="full-name"
+                        placeholder="Enter your full name"
+                    >
+                    <br><br>
+
+                    <label for="register-email">
+                        Email / Mobile Number
+                    </label>
+                    <br>
+                    <input
+                        type="text"
+                        id="register-email"
+                        name="register-email"
+                        placeholder="Enter email or mobile number"
+                    >
+                    <br><br>
+
+                    <label for="register-password">
+                        Password
+                    </label>
+                    <br>
+                    <input
+                        type="password"
+                        id="register-password"
+                        name="register-password"
+                        placeholder="Create password"
+                    >
+                    <br><br>
+
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+                    <br>
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirm-password"
+                        placeholder="Confirm password"
+                    >
+                    <br><br>
+
+                    <button type="submit">
+                        CREATE ACCOUNT
+                    </button>
+
+                    <br><br>
+
+                    <p>OR</p>
+
+                    <button type="button">
+                        Continue with Google
+                    </button>
+
+                </form>
+
+                <br>
+
+                <p>
+                    Already have an account?
+                    <a href="#login">
+                        Login
+                    </a>
+                </p>
 
             </div>
 
 
-            <div class="profile-info">
+            <!-- FORGOT PASSWORD -->
+            <div id="forgot-password">
 
-                <div>
-                    <span>Name</span>
-                    <b id="infoName">-</b>
-                </div>
+                <h2>Forgot Password?</h2>
 
-                <div>
-                    <span>Username</span>
-                    <b id="infoUsername">-</b>
-                </div>
+                <form>
 
-                <div>
-                    <span>Email</span>
-                    <b id="infoEmail">-</b>
-                </div>
+                    <label for="reset-email">
+                        Email / Mobile Number
+                    </label>
+                    <br>
 
-                <div>
-                    <span>Account Created</span>
-                    <b id="infoCreated">-</b>
-                </div>
+                    <input
+                        type="text"
+                        id="reset-email"
+                        name="reset-email"
+                        placeholder="Enter email or mobile number"
+                    >
+
+                    <br><br>
+
+                    <button type="submit">
+                        SEND OTP
+                    </button>
+
+                </form>
+
+                <br>
+
+                <a href="#login">
+                    Back to Login
+                </a>
 
             </div>
 
+        </main>
 
-            <div class="profile-actions">
+    </section>
 
-                <button onclick="showChangePassword()">
-                    🔐 Change Password
+
+    <hr>
+
+
+    <!-- ==================================================
+         PAGE 2 — HOME
+         ================================================== -->
+
+    <section id="page-2">
+
+        <header>
+
+            <h1>AG D-M TOP UP</h1>
+
+            <nav>
+                <a href="#page-2">Home</a> |
+                <a href="#mega-offer">Mega Offer</a> |
+                <a href="#ff-topup">FF TOPUP</a> |
+                <a href="#social-media">Social Media</a> |
+                <a href="#my-orders">My Orders</a> |
+                <a href="#account">Account</a>
+            </nav>
+
+        </header>
+
+
+        <main>
+
+            <!-- HERO -->
+
+            <section>
+
+                <h2>AG D-M TOP UP</h2>
+
+                <p>
+                    Free Fire Top Up & Social Media Service
+                </p>
+
+                <p>
+                    Fast Service • Easy Order • Secure Payment
+                </p>
+
+                <button type="button">
+                    START ORDER
                 </button>
 
-                <button
-                    class="danger-btn"
-                    onclick="logout()"
-                >
-                    🚪 Logout
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
+            </section>
 
 
-    <!-- =================================================
-         BOTTOM NAV
-    ================================================== -->
-
-    <nav id="bottomNav" class="bottom-nav hidden">
-
-        <button
-            class="nav-item active"
-            data-page="homePage"
-            onclick="showPage('homePage')"
-        >
-            <span>⌂</span>
-            <small>Home</small>
-        </button>
+            <hr>
 
 
-        <button
-            class="nav-item"
-            data-page="ordersPage"
-            onclick="showPage('ordersPage')"
-        >
-            <span>▣</span>
-            <small>Orders</small>
-        </button>
+            <!-- MEGA OFFER -->
+
+            <section id="mega-offer">
+
+                <h2>⚡ Mega Offer</h2>
 
 
-        <button
-            class="nav-item nav-main"
-            data-page="topupPage"
-            onclick="showPage('topupPage')"
-        >
-            <span>💎</span>
-            <small>Top Up</small>
-        </button>
+                <article>
+
+                    <h3>FF Like</h3>
+
+                    <p>
+                        Free Fire Like Service
+                    </p>
+
+                    <p>
+                        Package: 200 Likes
+                    </p>
+
+                    <p>
+                        Delivery: Instant Delivery
+                    </p>
+
+                    <p>
+                        Price: ৳25
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
 
 
-        <button
-            class="nav-item"
-            data-page="tournamentPage"
-            onclick="showPage('tournamentPage')"
-        >
-            <span>🏆</span>
-            <small>Games</small>
-        </button>
+                <article>
+
+                    <h3>Mystery Box Offer 🎁</h3>
+
+                    <p>
+                        Mystery Box Offer
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
 
 
-        <button
-            class="nav-item"
-            data-page="profilePage"
-            onclick="showPage('profilePage')"
-        >
-            <span>👤</span>
-            <small>Profile</small>
-        </button>
+                <article>
 
-    </nav>
+                    <h3>Game Information Check</h3>
 
+                    <p>
+                        Game Information Check Service
+                    </p>
 
-    <!-- =================================================
-         MODAL
-    ================================================== -->
+                    <button type="button">
+                        CHECK NOW
+                    </button>
 
-    <div id="modal" class="modal hidden">
-
-        <div class="modal-box">
-
-            <button
-                class="modal-close"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
-
-            <div id="modalContent"></div>
-
-        </div>
-
-    </div>
+                </article>
 
 
-    <!-- TOAST -->
-    <div id="toast" class="toast">
-        <span id="toastMessage"></span>
-    </div>
+                <article>
+
+                    <h3>শুক্রবার অফার</h3>
+
+                    <p>
+                        শুক্রবারের বিশেষ অফার
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
 
 
-</div>
+                <article>
+
+                    <h3>প্রক্সি সার্ভার সেটআপ 💯</h3>
+
+                    <p>
+                        Proxy Server Setup Service
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
 
 
-<script src="script.js"></script>
+                <article>
+
+                    <h3>ফ্রি স্পিন 😊</h3>
+
+                    <p>
+                        Free Spin Service
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+            </section>
+
+
+            <hr>
+
+
+            <!-- FF TOPUP -->
+
+            <section id="ff-topup">
+
+                <h2>💎 FF TOPUP</h2>
+
+
+                <article>
+
+                    <h3>FF TopUp (UID)</h3>
+
+                    <p>
+                        Free Fire Top Up by UID
+                    </p>
+
+                    <button type="button">
+                        TOP UP NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>Weekly/Monthly Offer</h3>
+
+                    <p>
+                        Weekly / Monthly Offer
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>FF ID Like (Daily 200 Max)</h3>
+
+                    <p>
+                        Daily maximum 200 Likes
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>Weekly Lite (উইকলি লাইট)</h3>
+
+                    <p>
+                        Weekly Lite Package
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>Indonesia Server (UID)</h3>
+
+                    <p>
+                        Indonesia Server Service
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>New Level Up Pass</h3>
+
+                    <p>
+                        New Level Up Pass Service
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>FF Ingame [Airdrop]</h3>
+
+                    <p>
+                        FF Ingame Airdrop Service
+                    </p>
+
+                    <button type="button">
+                        BUY NOW
+                    </button>
+
+                </article>
+
+            </section>
+
+
+            <hr>
+
+
+            <!-- SOCIAL MEDIA -->
+
+            <section id="social-media">
+
+                <h2>📱 Social Media Service</h2>
+
+
+                <article>
+
+                    <h3>Facebook Page Like/Followers</h3>
+
+                    <p>
+                        Facebook Page Like / Followers
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>Facebook React Post/Photos</h3>
+
+                    <p>
+                        Facebook Post / Photo React
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>Facebook ID Followers</h3>
+
+                    <p>
+                        Facebook Profile Followers
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>TikTok Account Followers</h3>
+
+                    <p>
+                        TikTok Account Followers
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>TikTok Video Likes</h3>
+
+                    <p>
+                        TikTok Video Likes
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>YouTube Video Likes</h3>
+
+                    <p>
+                        YouTube Video Likes
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+
+                <article>
+
+                    <h3>YouTube Video Views</h3>
+
+                    <p>
+                        YouTube Video Views
+                    </p>
+
+                    <button type="button">
+                        ORDER NOW
+                    </button>
+
+                </article>
+
+            </section>
+
+
+            <hr>
+
+
+            <!-- MY ORDERS -->
+
+            <section id="my-orders">
+
+                <h2>📦 My Orders</h2>
+
+                <p>
+                    Login to view your orders.
+                </p>
+
+            </section>
+
+
+            <hr>
+
+
+            <!-- ACCOUNT -->
+
+            <section id="account">
+
+                <h2>👤 My Account</h2>
+
+                <p>Profile</p>
+                <p>My Orders</p>
+                <p>Payment History</p>
+                <p>Support</p>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+
+            <hr>
+
+            <h3>AG D-M TOP UP</h3>
+
+            <p>
+                Fast Service • Easy Order • Secure Payment
+            </p>
+
+            <p>
+                © 2026 AG D-M TOP UP. All Rights Reserved.
+            </p>
+
+        </footer>
+
+    </section>
 
 </body>
 </html>
